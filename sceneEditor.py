@@ -264,6 +264,13 @@ class myLevelEditor(AppShell):
         else:
             camera.hide()
         self.selectNode(base.camera) ## Initially, we select camera as the first node...
+        self.disableShowbaseMouse()
+
+    def disableShowbaseMouse(self):
+        base.useDrive()
+        base.disableMouse()
+        if base.mouseInterface: base.mouseInterface.detachNode()
+        if base.mouse2cam: base.mouse2cam.detachNode()
 
     def appInit(self):
         #################################################################
@@ -1685,7 +1692,7 @@ class myLevelEditor(AppShell):
             else:
                 doneColor = None
                 flashColor = VBase4(1,0,0,1)
-            # Temporarily set node path color
+            # Temporarily set nodepath color
             nodePath.setColor(flashColor)
             # Clean up color in a few seconds
             t = taskMgr.doMethodLater(1.5,

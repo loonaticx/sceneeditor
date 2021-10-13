@@ -309,7 +309,7 @@ class BlendAnimPanel(AppShell):
             taskMgr.add(self.playTask, self.id + '_UpdateTask')
             self.stopButton.config(state=NORMAL)
         else:
-            print('----Illegal Animaion name!!', self.animNameA +  ',  '+ self.animNameB)
+            print('----Illegal Animation name!!', self.animNameA +  ',  '+ self.animNameB)
         return
 
     def playTask(self, task):
