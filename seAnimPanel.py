@@ -9,6 +9,9 @@ import string
 import math
 import types
 from direct.task import Task
+import sys
+from panda3d.core import Filename
+from tkinter.filedialog import askopenfilename
 
 if sys.version_info >= (3, 0):
     from tkinter.simpledialog import askfloat
@@ -407,7 +410,7 @@ class AnimPanel(AppShell):
         #################################################################
         if self.animName in self['animList']:
             # Convert scale value to float
-            frame = string.atof(frame)
+            frame = float(frame)
             # Now convert t to seconds for offset calculations
             if self.unitsVar.get() == FRAMES:
                 frame = frame / self.fps

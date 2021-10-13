@@ -9,6 +9,7 @@ import string
 import math
 import types
 from direct.task import Task
+import sys
 
 if sys.version_info >= (3, 0):
     from tkinter.simpledialog import askfloat
@@ -431,7 +432,7 @@ class BlendAnimPanel(AppShell):
         #################################################################
         if (self.animNameA in self['animList'])and(self.animNameB in self['animList']):
             # Convert scale value to float
-            frame = string.atof(frame)
+            frame = float(frame)
             # Now convert t to seconds for offset calculations
             if self.unitsVar.get() == FRAMES:
                 frame = frame / self.fps

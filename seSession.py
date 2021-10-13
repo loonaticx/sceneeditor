@@ -23,6 +23,8 @@ from direct.gui import OnscreenText
 import types
 import string
 from direct.showbase import Loader
+from direct.task.Task import Task
+
 
 class SeSession(DirectObject):  ### Customized DirectSession
 
@@ -409,9 +411,10 @@ class SeSession(DirectObject):  ### Customized DirectSession
             self.widget.setScalingFactor(dnp.getRadius())
             # Spawn task to have object handles follow the selected object
             taskMgr.remove('followSelectedNodePath')
-            t = Task.Task(self.followSelectedNodePathTask)
-            t.dnp = dnp
-            taskMgr.add(t, 'followSelectedNodePath')
+            if hasattr(self.followSelectedNodePathTask, 'Task'):
+                t = Task.Task(self.followSelectedNodePathTask)
+                t.dnp = dnp
+                taskMgr.add(t, 'followSelectedNodePath')
             # Send an message marking the event
             messenger.send('DIRECT_selectedNodePath', [dnp])
             if callback:

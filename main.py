@@ -1,0 +1,2 @@
+import sceneEditor
+s = sceneEditor()

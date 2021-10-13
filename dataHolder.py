@@ -5,6 +5,7 @@ from direct.showbase.TkGlobal import*
 import Pmw
 from direct.tkwidgets import Dial
 from direct.tkwidgets import Floater
+import sys
 
 if sys.version_info >= (3, 0):
     from tkinter.filedialog import askopenfilename
@@ -695,13 +696,14 @@ class dataHolder:
         # This function will return a Dictionary which contains the animation data in the actor "actorName".
         # The data inside is get from the actor, so, it can't be wrong...
         ###########################################################################
-        animContorlDict = self.ActorDic[actorName].getAnimControlDict()
+        animControlDict = self.ActorDic[actorName].getAnimControlDict()
         animNameList = self.ActorDic[actorName].getAnimNames()
         if len(animNameList)==0:
             return {}
         animDict = {}
         for anim in animNameList:
-            animDict[anim] = animContorlDict['lodRoot']['modelRoot'][anim][0]
+            animDict[anim] = animControlDict['modelRoot'][anim][0]
+            #animDict[anim] = animControlDict['lodRoot']['modelRoot'][anim][0]
         return animDict
 
     def addDummyNode(self,nodePath):
@@ -864,12 +866,14 @@ class dataHolder:
         # This function will return a list which contains all objects' names in the scene.
         # It means which won't have any kinds of animation, blend animation or Mopath data inside.
         ###########################################################################
-        list = ['camera'] # Default object you can select camera
-        list = list + self.ModelDic.keys() \
-               + self.ActorDic.keys() + self.collisionDict.keys() \
-               + self.dummyDict.keys() + self.particleNodes.keys() \
-               + self.lightManager.getLightList()
-        return list
+        objlist = ['camera'] # Default object you can select camera
+        objlist.append(list(self.ModelDic.keys()))
+        objlist.append(list(self.ActorDic.keys()))
+        objlist.append(list(self.collisionDict.keys()))
+        objlist.append(list(self.dummyDict.keys()))
+        objlist.append(list(self.particleNodes.keys()))
+        objlist.append(self.lightManager.getLightList())
+        return objlist
 
     def getObjFromSceneByName(self, name):
         ###########################################################################

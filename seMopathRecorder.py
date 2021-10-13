@@ -149,16 +149,16 @@ class MopathRecorder(AppShell, DirectObject):
         # The nurbs curves
         self.curveCollection = None
         # Curve drawers
-        self.nurbsCurveDrawer = NurbsCurveDrawer()
-        self.nurbsCurveDrawer.setCurves(ParametricCurveCollection())
-        self.nurbsCurveDrawer.setNumSegs(self.numSegs)
-        self.nurbsCurveDrawer.setShowHull(0)
-        self.nurbsCurveDrawer.setShowCvs(0)
-        self.nurbsCurveDrawer.setNumTicks(0)
-        self.nurbsCurveDrawer.setTickScale(5.0)
-        self.curveNodePath = self.recorderNodePath.attachNewNode(
-            self.nurbsCurveDrawer.getGeomNode())
-        useDirectRenderStyle(self.curveNodePath)
+        #self.nurbsCurveDrawer = NurbsCurveDrawer()
+        #self.nurbsCurveDrawer.setCurves(ParametricCurveCollection())
+        #self.nurbsCurveDrawer.setNumSegs(self.numSegs)
+        #self.nurbsCurveDrawer.setShowHull(0)
+        #self.nurbsCurveDrawer.setShowCvs(0)
+        #self.nurbsCurveDrawer.setNumTicks(0)
+        #self.nurbsCurveDrawer.setTickScale(5.0)
+        #self.curveNodePath = self.recorderNodePath.attachNewNode(
+        #    self.nurbsCurveDrawer.getGeomNode())
+        #useDirectRenderStyle(self.curveNodePath)
         # Playback variables
         self.maxT = 0.0
         self.playbackTime = 0.0
@@ -374,7 +374,7 @@ class MopathRecorder(AppShell, DirectObject):
         self.speedEntry.bind(
             '<Return>',
             lambda e = None, s = self: s.setSpeedScale(
-            string.atof(s.speedVar.get())))
+            float(s.speedVar.get())))
         self.speedEntry.pack(side = tkinter.LEFT, expand = 0)
         frame.pack(fill = tkinter.X, expand = 1)
 
