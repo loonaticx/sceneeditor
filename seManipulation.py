@@ -925,9 +925,9 @@ class ObjectHandles(NodePath,DirectObject):
 
     def getWidgetIntersectPt(self, nodePath, plane):
         # Find out the point of interection of the ray passing though the mouse
-        # with the plane containing the 2D xlation or 1D rotation widgets
+        # with the plane containing the 2D translation or 1D rotation widgets
 
-        # Calc the xfrom from camera to the nodePath
+        # Calc the transform from camera to the nodePath
         mCam2NodePath = SEditor.camera.getMat(nodePath)
 
         # And determine where the viewpoint is relative to widget

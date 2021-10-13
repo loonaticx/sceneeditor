@@ -12,7 +12,7 @@ class seLight(NodePath):
     #################################################################
     # seLight(NodePath)
     # This is an object for keeping light data and let we can manipulate
-    # lights as otherNopaths.
+    # lights as other Nodepaths.
     # This idea basically is from directLight.
     # But the way directLight object worked is not we want in our
     # sceneEditor. So, we wrote one by ourself.
@@ -168,7 +168,7 @@ class seLight(NodePath):
         #################################################################
         # getPosition(self)
         # getPosition(self)
-        # This functioln will return a Point3 object which contains
+        # This function will return a Point3 object which contains
         # the x, y, z position data of this light node.
         # It only has meaning for "point Light" and "Directional light"
         #################################################################
@@ -179,7 +179,7 @@ class seLight(NodePath):
         #################################################################
         # setPosition(self, pos)
         # This function will take a Point3 object as a input.
-        # Then, this function will set the itself andd light node to the
+        # Then, this function will set the itself and light node to the
         # target point.
         #################################################################
         self.LightNode.setPos(pos)
@@ -201,7 +201,7 @@ class seLight(NodePath):
     def setOrientation(self,orient):
         #################################################################
         # setOrientation(self, orient)
-        # This funtction will take a Vec3-type object as an input.
+        # This function will take a Vec3-type object as an input.
         # Then this function will set itself nad light node to face
         # the target orientation.
         #
@@ -220,7 +220,7 @@ class seLight(NodePath):
         # the constant, linear and quadratic attenuation for this light node.
         #
         # This function will only have meaning for point light and spot light
-        # tyoe of lights.
+        # type of lights.
         #
         #################################################################
         return Vec3(self.constant,self.linear,self.quadratic)
@@ -229,7 +229,7 @@ class seLight(NodePath):
         #################################################################
         # setConstantAttenuation(self, value)
         # This function will take a float number as an input.
-        # Then, this function will set the Constant Atenuation value
+        # Then, this function will set the Constant Attenuation value
         # to this number.
         #################################################################
         self.light.setAttenuation(Vec3(value, self.linear, self.quadratic))
@@ -240,7 +240,7 @@ class seLight(NodePath):
         #################################################################
         # setLinearAttenuation(self, value)
         # This function will take a float number as an input.
-        # Then, this function will set the Linear Atenuation value
+        # Then, this function will set the Linear Attenuation value
         # to this number.
         #################################################################
         self.light.setAttenuation(Vec3(self.constant, value, self.quadratic))
@@ -251,7 +251,7 @@ class seLight(NodePath):
         #################################################################
         # setQuadraticAttenuation(self, value)
         # This function will take a float number as an input.
-        # Then, this function will set the Quadratic Atenuation value
+        # Then, this function will set the Quadratic Attenuation value
         # to this number.
         #################################################################
         self.light.setAttenuation(Vec3(self.constant, self.linear, value))
@@ -270,7 +270,7 @@ class seLight(NodePath):
         #################################################################
         # setExponent(self, value)
         # This function will take a float number as an input.
-        # Then, this function will set the Exponent Atenuation value
+        # Then, this function will set the Exponent Attenuation value
         # to this number.
         #################################################################
         self.light.setExponent(value)
@@ -408,7 +408,7 @@ class seLightManager(NodePath):
         # addLight(self, light)
         # This function will put light in and save its properties in to a seLight Node
         # Attention!!
-        # only Spotlight obj nneds to be specified a lens node first. i.e. setLens() first!
+        # only Spotlight obj needs to be specified a lens node first. i.e. setLens() first!
         #################################################################
         type = light.getType().getName().lower()
 
@@ -473,7 +473,7 @@ class seLightManager(NodePath):
         # delete(self, name, removeEntry = True)
         # This function will remove light node had the same name with user input.
         # Also, you can specify the removeEntry to decide to remove the entry from the lightDict or not.
-        # Normaly, you alway want to remove the entry from the dictionary. Thsi is only used for "deleteAll" function.
+        # Normally, you alway want to remove the entry from the dictionary. This is only used for "deleteAll" function.
         #################################################################
         type = self.lightDict[name].getType()
         if type == 'ambient':
@@ -512,7 +512,7 @@ class seLightManager(NodePath):
     def rename(self,oName,nName):
         #################################################################
         # rename(self, oName, nName)
-        # This function will reanem the light named "oName(String)" to
+        # This function will rename the light named "oName(String)" to
         # nName(String)
         #################################################################
         if self.isLight(oName):

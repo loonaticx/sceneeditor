@@ -132,7 +132,7 @@ class myLevelEditor(AppShell):
         self.parent.geometry('%dx%d+%d+%d' % (self.frameWidth, self.frameHeight,self.frameIniPosX,self.frameIniPosY))
 
 
-        ###### Put th directLabel on the screen to show the selected object Data
+        ###### Put the directLabel on the screen to show the selected object Data
         self.posLabel = DirectLabel(
             relief = None,
             pos = (-1.3, 0, 0.90),
@@ -358,7 +358,7 @@ class myLevelEditor(AppShell):
         #################################################################
         # buttonPushed(self, buttonNum)
         # This function will handle all button events from top level window
-        # Take the button index as a reference to sence which button has been pushed.
+        # Take the button index as a reference to sense which button has been pushed.
         #################################################################
         ####
         ####  Change here to process the button event further.
@@ -471,7 +471,7 @@ class myLevelEditor(AppShell):
                                 label='Exit',
                                 command=self.quit)
 
-        ## Creat "Edit" on the menu and its stuff
+        ## Create "Edit" on the menu and its stuff
         self.menuBar.addmenu('Edit', 'Editting tools')
         self.menuBar.addmenuitem('Edit', 'command', 'Un-do',
                                 label='Undo...',
@@ -504,7 +504,7 @@ class myLevelEditor(AppShell):
                                 label='Render Setting',
                                 command=self.showRenderSetting)
 
-        ## Creat "Panel" on the menu and its stuff
+        ## Create "Panel" on the menu and its stuff
         self.menuBar.addmenu('Panel', 'Panel tools')
         self.menuBar.addmenuitem('Panel', 'command', 'Open Side Window',
                                 label='Side Window',
@@ -549,7 +549,7 @@ class myLevelEditor(AppShell):
 
     def onDestroy(self, event):
         #################################################################
-        # If you have open any thing, please rewrite here!
+        # If you have open anything, please rewrite here!
         #################################################################
         if taskMgr.hasTaskNamed('seMonitorSelectedNode'):
                 taskMgr.remove('seMonitorSelectedNode')
@@ -672,7 +672,7 @@ class myLevelEditor(AppShell):
         # This function will be called when user try to open a property window
         # for one specific node in the scene.
         # Here we will call dataHolder to get the basic properties
-        # we would like to let user to see and cange.
+        # we would like to let user to see and change.
         # And then we pass those information into propertyWindow
         #################################################################
         type, info = AllScene.getInfoOfThisNode(nodePath)
@@ -706,7 +706,7 @@ class myLevelEditor(AppShell):
         # remove(self, nodePath = None)
         # This function will be called when user try to delete a node from scene
         #
-        # For safty issue,
+        # For safety issue,
         # we will do deselect first then remove the certain node.
         #
         #################################################################
@@ -750,8 +750,8 @@ class myLevelEditor(AppShell):
     def setAsReparentTarget(self, nodepath = None):
         #################################################################
         # setAsReparentTarget(self, nodepath = None)
-        # This function will be called when user select a nodePaht
-        # and want to reparent other node under it. (Drom side window pop-up nemu)
+        # This function will be called when user select a nodePath
+        # and want to reparent other node under it. (From side window pop-up menu)
         #################################################################
         SEditor.setActiveParent(nodepath)
         return
@@ -852,7 +852,7 @@ class myLevelEditor(AppShell):
             currentModName=currentF.getBasenameWoExtension()
             # Let us actually remove the scene from sys modules... this is done because every scene is loaded as a module
             # And if we reload a scene python wont reload since its already in sys.modules... and hence we delete it
-            # If there is ever a garbage colleciton bug..this might be a point to look at
+            # If there is ever a garbage collection bug..this might be a point to look at
             if currentModName in sys.modules:
                 del sys.modules[currentModName]
                 print(sys.getrefcount(AllScene.theScene))
@@ -882,7 +882,7 @@ class myLevelEditor(AppShell):
             currentModName=currentF.getBasenameWoExtension()
             # Let us actually remove the scene from sys modules... this is done because every scene is loaded as a module
             # And if we reload a scene python wont reload since its already in sys.modules... and hence we delete it
-            # If there is ever a garbage colleciton bug..this might be a point to look at
+            # If there is ever a garbage collection bug..this might be a point to look at
             if currentModName in sys.modules:
                 del sys.modules[currentModName]
                 print(sys.getrefcount(AllScene.theScene))
@@ -1273,7 +1273,7 @@ class myLevelEditor(AppShell):
             self.enableControl = True
 
         self.setControlSet(controlType, dataList)
-        self.lastContorlTimer = globalClock.getFrameTime()
+        self.lastControlTimer = globalClock.getFrameTime()
         if controlType == 'Keyboard':
             self.controlType = 'Keyboard'
             self.keyControlEventDict = {}
@@ -1416,7 +1416,7 @@ class myLevelEditor(AppShell):
         # monitorSelectedNodeTask(self, task)
         # This is a function which will keep tracking
         # the position, orientation and scale data of selected node and update the display on the screen.
-        # Alos, it will send out message to sychronize the data in the placer and property window.
+        # Alas, it will send out message to synchronize the data in the placer and property window.
         ################################################################
         if self.nodeSelected != None:
             pos = self.nodeSelected.getPos()
@@ -1576,7 +1576,7 @@ class myLevelEditor(AppShell):
         # This function will be called when user use the hot-key to change the
         # world setting. (From seSession)
         # In this function we will restore the change and let side window know
-        # the hot-key ahs been pushed.
+        # the hot-key has been pushed.
         ################################################################
         if self.sideWindow != None:
             self.sideWindow.toggleWidgetVisFromMainW()
@@ -1589,7 +1589,7 @@ class myLevelEditor(AppShell):
         # This function will be called when user use the hot-key to change the
         # world setting. (From seSession)
         # In this function we will restore the change and let side window know
-        # the hot-key ahs been pushed.
+        # the hot-key has been pushed.
         ################################################################
         if self.sideWindow != None:
             self.sideWindow.toggleBackfaceFromMainW()
@@ -1602,7 +1602,7 @@ class myLevelEditor(AppShell):
         # This function will be called when user use the hot-key to change the
         # world setting. (From seSession)
         # In this function we will restore the change and let side window know
-        # the hot-key ahs been pushed.
+        # the hot-key has been pushed.
         ################################################################
         if self.sideWindow != None:
             self.sideWindow.toggleTextureFromMainW()
@@ -1615,7 +1615,7 @@ class myLevelEditor(AppShell):
         # This function will be called when user use the hot-key to change the
         # world setting. (From seSession)
         # In this function we will restore the change and let side window know
-        # the hot-key ahs been pushed.
+        # the hot-key has been pushed.
         ################################################################
         if self.sideWindow != None:
             self.sideWindow.toggleWireframeFromMainW()
