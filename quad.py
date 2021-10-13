@@ -1,7 +1,7 @@
 #########################################################################################################################################
 # This file implements a Quad View for the level editor
-# This feature is not yet enabled in the level editor because picking objects in quad view doesnt work
-# I have tried to send the picking function in seSelection.py the correct camera and mouse coordinates but something seems to be wron
+# This feature is not yet enabled in the level editor because picking objects in quad view doesn't work
+# I have tried to send the picking function in seSelection.py the correct camera and mouse coordinates but something seems to be wrong
 # There are two classes in this file..the QuadView and the viewPort...there are four instances of viewport, one for each view in QuadView
 #########################################################################################################################################
 
@@ -144,7 +144,7 @@ class ViewPort:
 class QuadView(DirectObject):
 #########################################################################################################################################
 # This class sets up four cameras for the scene (ideally we want four instances of render too)
-# and then instatiates a ViewPort class for each of them
+# and then instantiates a ViewPort class for each of them
 #
 #########################################################################################################################################
 

@@ -167,8 +167,8 @@ class myLevelEditor(AppShell):
         self.dataFlowEvents = [
             ## Event from Side Window
             ['SW_lightToggle',self.lightToggle],
-            ['SW_collisionToggle',AllScene.toggleCollisionVisable],
-            ['SW_particleToggle',self.toggleParticleVisable],
+            ['SW_collisionToggle',AllScene.toggleCollisionVisible],
+            ['SW_particleToggle',self.toggleParticleVisible],
             ['SW_close',self.sideWindowClose],
             ## From Duplication Window
             ['DW_duplicating',self.duplicationObj],
@@ -211,7 +211,7 @@ class myLevelEditor(AppShell):
             ## From Placer
             ['Placer_close', self.closePlacerPanel],
             ## From Particle Panel
-            ['ParticlePanle_close', self.closeParticlePanel],
+            ['ParticlePanel_close', self.closeParticlePanel],
             ## From SEditor object which is a altered DirectSession
             ['SEditor-ToggleWidgetVis',self.toggleWidgetVis],
             ['SEditor-ToggleBackface',self.toggleBackface],
@@ -1178,16 +1178,16 @@ class myLevelEditor(AppShell):
         MopathPanel = MopathRecorder()
         pass
 
-    def toggleParticleVisable(self, visable):
+    def toggleParticleVisible(self, visible):
         ################################################################
-        # toggleParticleVisable(self, visable)
+        # toggleParticleVisible(self, visible)
         # This function will be called each time user has toggled
         # the check box of Particle visibility in the side window.
         # The reason we keep track this is because
         # we have to know we should show/hide the model on the new-created particle
         ################################################################
-        self.ParticleEnable = visable
-        AllScene.toggleParticleVisable(visable)
+        self.ParticleEnable = visible
+        AllScene.toggleParticleVisible(visible)
         return
 
     def openLightingPanel(self):

@@ -64,14 +64,14 @@ class propertyWindow(AppShell,Pmw.MegaWidget):
                            relief = RIDGE, borderwidth=5)
         name_label.pack()
         outFrame = Frame(mainFrame, relief = RIDGE, borderwidth=3)
-        self.contentWidge = self.createcomponent(
+        self.contentWidget = self.createcomponent(
             'scrolledFrame',
             (), None,
             Pmw.ScrolledFrame, (outFrame,),
             hull_width = 200, hull_height = 300,
             usehullsize = 1)
-        self.contentFrame = self.contentWidge.component('frame')
-        self.contentWidge.pack(fill = 'both', expand = 1,padx = 3, pady = 5)
+        self.contentFrame = self.contentWidget.component('frame')
+        self.contentWidget.pack(fill = 'both', expand = 1,padx = 3, pady = 5)
         outFrame.pack(fill = 'both', expand = 1)
 
         # Creating different interface depands on object's type
@@ -677,7 +677,7 @@ class propertyWindow(AppShell,Pmw.MegaWidget):
     def toggleAlpha(self):
         #################################################################
         # toggleAlpha(self)
-        # This funtion will toggle the objects alpha value
+        # This function will toggle the objects alpha value
         # And, it will also reset the "Bin" to
         # "fixed" if user enable the alpha for this object.
         #################################################################

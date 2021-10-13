@@ -214,7 +214,7 @@ class ParticleEffect(NodePath):
         print("Particle Effect Reading using VFS")
         #    else:
         #       execfile(filename.toOsSpecific())
-        #       print "Shouldnt be wrong"
+        #       print "Shouldn't be wrong"
         #except:
         #    self.notify.error('loadConfig: failed to load particle file: '+ repr(filename))
 

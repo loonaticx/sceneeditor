@@ -95,14 +95,14 @@ class controllerWindow(AppShell):
         ###################################################
         # Notebook pages for specific controller setting  #
         ###################################################
-        self.contentWidge = self.createcomponent(
+        self.contentWidget = self.createcomponent(
             'scrolledFrame',
             (), None,
             Pmw.ScrolledFrame, (settingFrame,),
             hull_width = 200, hull_height = 300,
             usehullsize = 1)
-        self.contentFrame = self.contentWidge.component('frame')
-        self.contentWidge.pack(fill = 'both', expand = 1,padx = 3, pady = 5)
+        self.contentFrame = self.contentWidget.component('frame')
+        self.contentWidget.pack(fill = 'both', expand = 1,padx = 3, pady = 5)
         self.objNotebook = Pmw.NoteBook(self.contentFrame, tabpos = None,
                                         borderwidth = 0)
         keyboardPage = self.objNotebook.add('Keyboard')
@@ -582,7 +582,7 @@ class controllerWindow(AppShell):
         ####################################################################
         # enableControl(self)
         # Call back function.
-        # THis function will be called each time when user clicks on the
+        # This function will be called each time when user clicks on the
         # "Enable Control" button. This function will do pretty much
         # the same thing with ok_press function, except that this function
         # will activate the control process in sceneEditor.
@@ -661,7 +661,7 @@ class controllerWindow(AppShell):
     def setNodePathIn(self, nodePath):
         ####################################################################
         # setNodePathIn(self, nodePath)
-        # THis function will be called by sceneEditor.
+        # This function will be called by sceneEditor.
         # After we send out a message to sceneEditor in setTargetObj function,
         # This function will be called by sceneEditor after we get the reference
         # of target object from dataHolder.
@@ -679,7 +679,7 @@ class controllerWindow(AppShell):
         # This function will send out the message to sceneEditor to process
         # the saving. Also, this function will change the "self.keepControl" flag.
         # So, when user closes the window with control enabled, it will keep
-        # the control process runnning. otherwise program will disable the
+        # the control process running. otherwise program will disable the
         # control automatically when panel has been closed.
         #
         # It doesn't mean that this function will automatically enable the

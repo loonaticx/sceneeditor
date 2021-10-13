@@ -154,7 +154,7 @@ def getNearProjectionPoint(nodePath):
     if origin[1] != 0.0:
         return origin * (SEditor.dr.near / origin[1])
     else:
-        # Object is coplaner with camera, just return something reasonable
+        # Object is coplanar with camera, just return something reasonable
         return Point3(0, SEditor.dr.near, 0)
 
 def getScreenXY(nodePath):

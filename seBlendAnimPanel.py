@@ -246,7 +246,7 @@ class BlendAnimPanel(AppShell):
         frameFrame.pack(side = LEFT, expand = 1, fill = X)
         actorFrame.pack(side = TOP, expand = True, fill = X)
 
-        ## button contorl
+        ## button control
         actorFrame = Frame(interior)
         ButtomFrame = Frame(actorFrame, relief = SUNKEN, bd = 1,borderwidth=5)
         self.toStartButton = self.createcomponent(
@@ -500,7 +500,7 @@ class BlendAnimPanel(AppShell):
     def setRatio(self, ratio):
         #################################################################
         # setRatio(self, ratio)
-        # callback funtion
+        # callback function
         # This one will be called each time when user drag the blend ratio
         # slider on the panel. This will set the blening ratio to both animation.
         # (Which is "setControlEffect")
@@ -654,7 +654,7 @@ class BlendAnimPanel(AppShell):
         #################################################################
         # onDestroy(self, event)
         # This function will be call when user try to close the window.
-        # In here we will stop all tasks we have opend and disable the
+        # In here we will stop all tasks we have opened and disable the
         # blend setting of actor.
         # If we didn't disable the blend option, the next time you play
         # the animation via animation panel will cause some error.

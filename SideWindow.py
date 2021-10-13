@@ -20,7 +20,7 @@ else:
 class sideWindow(AppShell):
     #################################################################
     # sideWindow(AppShell)
-    # This class will open a side window wich contains a scene graph and
+    # This class will open a side window which contains a scenegraph and
     # a world setting page.
     #################################################################
     appversion      = '1.0'
@@ -79,7 +79,7 @@ class sideWindow(AppShell):
         # The interior of the toplevel panel
         interior = self.interior()
         mainFrame = Frame(interior)
-        ## Creat NoteBook
+        ## Create NoteBook
         self.notebookFrame = Pmw.NoteBook(mainFrame)
         self.notebookFrame.pack(fill=tkinter.BOTH,expand=1)
         sgePage = self.notebookFrame.add('Tree Graph')
@@ -264,8 +264,8 @@ class sideWindow(AppShell):
     def updateTreeGraph(self):
         #################################################################
         # updateTreeGraph(self)
-        # When scene graoh page has been opend, call sceneGraphExplorer to
-        # updata the tree.
+        # When scene graph page has been opened, call sceneGraphExplorer to
+        # update the tree.
         #################################################################
         self.SGE.update()
         pass
@@ -364,7 +364,7 @@ class sideWindow(AppShell):
     def toggleTexture(self):
         #################################################################
         # toggleTexture(self)
-        # This function will toggle the txture using option for the whole scene.
+        # This function will toggle the texture using option for the whole scene.
         #################################################################
         base.toggleTexture()
         self.texture = (self.texture+1)%2

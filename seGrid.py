@@ -46,7 +46,7 @@ class DirectGrid(NodePath,DirectObject):
         self.centerLines.setColor(VBase4(1,0,0,0))
         self.centerLines.setThickness(3)
 
-        # Small marker to hilight snap-to-grid point
+        # Small marker to highlight snap-to-grid point
         self.snapMarker = loader.loadModel('models/misc/sphere')
         self.snapMarker.node().setName('gridSnapMarker')
         self.snapMarker.reparentTo(self)

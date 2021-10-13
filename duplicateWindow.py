@@ -12,7 +12,7 @@ class duplicateWindow(AppShell):
     #################################################################
     # duplicateWindow(AppShell)
     # This class is used to create a dialog window
-    # for handling the "dupicate" command from the sceneEditor
+    # for handling the "duplicate" command from the sceneEditor
     #
     # Notice!
     # The actual duplicating process is not happending here!

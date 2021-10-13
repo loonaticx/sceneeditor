@@ -166,7 +166,7 @@ class AnimPanel(AppShell):
         self.maxLabel.pack(side = LEFT)
         frameFrame.pack(side = LEFT, expand = 1, fill = X)
 
-        ## button contorl
+        ## button control
         ButtomFrame = Frame(actorFrame, relief = SUNKEN, bd = 1,borderwidth=5)
         self.toStartButton = self.createcomponent(
             'toStart', (), None,

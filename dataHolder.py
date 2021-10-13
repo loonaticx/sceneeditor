@@ -47,17 +47,17 @@ class dataHolder:
 
     ModelDic = {} # Name: Model Nodepath; ModelRoot (whatever loader.loadModel() returns)
     ModelRefDic = {} # Name:File Path; (whatever the Open File Dialog Returns)
-    ActorDic = {} # Name:Actor Actor; Nodepath, ModelRoot (whatever Actor.Actor() returns)
+    ActorDict = {} # Name:Actor Actor; Nodepath, ModelRoot (whatever Actor.Actor() returns)
     ActorRefDic = {} # Name:File Path; (whatever the Open File Dialog Returns)
     curveDict = {}  # Node Name: CurveCollection; The actual curve collection data
     collisionDict = {} # Node Name: collisionNode; collisionNode in which contains a collision object
-    blendAnimDict = {} # Node Name: Dictionary of blended animation; User blened animation will be saved in here.
+    blendAnimDict = {} # Node Name: Dictionary of blended animation; User blended animation will be saved in here.
                        # the data structure in the inner dictionary is
                        # {"name of blended animation" : [Animation Name A, Animation Name B, Effect(Float)]}
-    collisionVisable = True # A flag used to record that collision objects are visable or not
+    collisionVisible = True # A flag used to record that collision objects are visible or not
     dummyDict = {}  # Node Name: Dummy Obj; All Object created as a dummy will be save here.
     particleDict={} # "Effect Name": Effect Object
-    particleNodes={} # "Effect Name": Node which is a parent to the effect used to move it aruond easily
+    particleNodes={} # "Effect Name": Node which is a parent to the effect used to move it around easily
     ModelNum = 0 # Count of number of models loaded
     ActorNum = 0 # Count of number of animations loaded
     theScene=None # Global variable to hold a loaded scene
@@ -67,8 +67,8 @@ class dataHolder:
     controlType = 'Keyboard' # default control input setting
     # Default Control setting for keyboard.
     controlTarget = camera
-    # This two dictionary set the basic setting for the keyboard contorl
-    # Those dictionaries will be passed into controller panel each time it has been opend
+    # This two dictionary set the basic setting for the keyboard control
+    # Those dictionaries will be passed into controller panel each time it has been opened
     # Do NOT change anything about INDEX in the dictionary!! (But it's OK to change the values)
     keyboardMapDict = {'KeyForward':'arrow_up',
                        'KeyBackward':'arrow_down',
@@ -113,7 +113,7 @@ class dataHolder:
 
     def __init__(self):
 
-        # Creat light manager to contorl the lighting
+        # Creat light manager to control the lighting
         self.lightManager = seLightManager()
         self.lightManager.allOn()
 
@@ -132,8 +132,8 @@ class dataHolder:
         # Delete Everything in the Scene Graph
         for index in self.ModelDic:
             self.ModelDic[index].removeNode()
-        for index in self.ActorDic:
-            self.ActorDic[index].removeNode()
+        for index in self.ActorDict:
+            self.ActorDict[index].removeNode()
         for index in self.dummyDict:
             self.dummyDict[index].removeNode()
         for index in self.collisionDict:
@@ -145,7 +145,7 @@ class dataHolder:
         # Clear all data containers in the dataHolder
         self.ModelDic.clear()
         self.ModelRefDic.clear()
-        self.ActorDic.clear()
+        self.ActorDict.clear()
         self.ActorRefDic.clear()
         self.dummyDict.clear()
         self.lightManager.deleteAll()
@@ -181,8 +181,8 @@ class dataHolder:
             nodePath.removeNode()
             self.ModelNum -= 1
             pass
-        elif name in self.ActorDic:
-            del self.ActorDic[name]
+        elif name in self.ActorDict:
+            del self.ActorDict[name]
             del self.ActorRefDic[name]
             if len(childrenList) != 0:
                 for node in childrenList:
@@ -240,8 +240,8 @@ class dataHolder:
         cHpr = hpr
         cScale = scale
         parent = nodePath.getParent()
-        if name in self.ActorDic:
-            holder = self.ActorDic
+        if name in self.ActorDict:
+            holder = self.ActorDict
             holderRef = self.ActorRefDic
             isModel = False
         elif name in self.ModelDic:
@@ -273,7 +273,7 @@ class dataHolder:
                 oHpr = oHpr + cHpr
 
             else:
-                ### copy the actor- not includ its animations
+                ### copy the actor- not include its animations
                 '''
                 Yeah, Yeah, Yeah, I know I should not reload the Actor but get it from modelpool too.
                 I tried, but it caused some error.
@@ -299,13 +299,13 @@ class dataHolder:
     def loadModel(self, lFilePath, FilePath, Name='Model_'):
         ###########################################################################
         # loadModel(self, lFilePath, FilePath, Name='Model_')
-        # This funciton will load a model node into the scene
+        # This function will load a model node into the scene
         # and will keep its reference in the ModelDic dictionary. {"NameOfModel":ModelRoot}
         # Also it will keep the file path in ModelRefDic dictionary.
         #
         # The "lFilePath" parameter now is completely useless,
         # but I still keep it here because maybe some day we will need it...
-        # (NOT because I am laze to change the funtion call in the sceneEditor...)
+        # (NOT because I am lazy to change the function call in the sceneEditor...)
         #
         ###########################################################################
         self.ModelNum += 1
@@ -327,47 +327,47 @@ class dataHolder:
     def loadActor(self, lFilePath, FilePath, Name='Actor_'):
         ###########################################################################
         # loadActor(self, lFilePath, FilePath, Name='Actor_')
-        # This funciton will load an actor node into the scene
-        # and will keep its reference in the ActorDic dictionary.{"NameOfActor":Actor}
+        # This function will load an actor node into the scene
+        # and will keep its reference in the ActorDict dictionary.{"NameOfActor":Actor}
         # Also it will keep the file path in ActorRefDic dictionary.
         #
         # The "lFilePath" parameter now is completely useless,
         # but I still keep it here because maybe some day we will need it...
-        # (NOT because I am laze to change the funtion call in the sceneEditor...)
+        # (NOT because I am lazy to change the function call in the sceneEditor...)
         #
         ###########################################################################
         self.ActorNum += 1
         defaultName = Name + '%d'%self.ActorNum
         while self.isInScene(defaultName):
             defaultName = defaultName + '_1'
-        self.ActorDic[defaultName] = Actor.Actor(FilePath.getFullpath())
-        if self.ActorDic[defaultName]==None:
-            del self.ActorDic[defaultName]
+        self.ActorDict[defaultName] = Actor.Actor(FilePath.getFullpath())
+        if self.ActorDict[defaultName]==None:
+            del self.ActorDict[defaultName]
             self.ActorNum -= 1
             return False
         self.ActorRefDic[defaultName] = FilePath
-        self.ActorDic[defaultName].setName(defaultName)
-        self.ActorDic[defaultName].reparentTo(render)
+        self.ActorDict[defaultName].setName(defaultName)
+        self.ActorDict[defaultName].reparentTo(render)
         messenger.send('SGE_Update Explorer',[render])
-        messenger.send('DH_LoadingComplete',[self.ActorDic[defaultName]])
+        messenger.send('DH_LoadingComplete',[self.ActorDict[defaultName]])
         return True
 
 
     def isActor(self, name):
         ###########################################################################
         # isActor(self, name)
-        # This funciton will return True if there is an Actor in the scene named "name"
+        # This function will return True if there is an Actor in the scene named "name"
         # and will return False if not.
         ###########################################################################
-        return name in self.ActorDic
+        return name in self.ActorDict
 
     def getActor(self, name):
         ###########################################################################
         # getActor(self, name)
-        # This funciton will return an Actor node named "name"
+        # This function will return an Actor node named "name"
         ###########################################################################
         if self.isActor(name):
-            return self.ActorDic[name]
+            return self.ActorDict[name]
         else:
             print('----No Actor named: ', name)
             return None
@@ -375,7 +375,7 @@ class dataHolder:
     def getModel(self, name):
         ###########################################################################
         # getModel(self, name)
-        # This funciton will return a model node named "name"
+        # This function will return a model node named "name"
         ###########################################################################
         if self.isModel(name):
             return self.ModelDic[name]
@@ -386,7 +386,7 @@ class dataHolder:
     def isModel(self, name):
         ###########################################################################
         # isModel(self, name)
-        # This funciton will return True if there is a Model in the scene named "name"
+        # This function will return True if there is a Model in the scene named "name"
         # and will return False if not.
         ###########################################################################
         return name in self.ModelDic
@@ -394,7 +394,7 @@ class dataHolder:
     def loadAnimation(self,name, Dic):
         ###########################################################################
         # loadAnimation(self,name, Dic)
-        # This funciton will load animation into an Actor NOde named "name."
+        # This function will load animation into an Actor NOde named "name."
         # All animation data needs to be put into a dictionary "Dic".
         # The formate of this dictionary is {"Name of Animation" : Path to the animation Egg file}
         #
@@ -403,9 +403,9 @@ class dataHolder:
         # this message will be catched by the sub window in the animation penal.
         ###########################################################################
         if self.isActor(name):
-            self.ActorDic[name].loadAnims(Dic)
+            self.ActorDict[name].loadAnims(Dic)
             for anim in Dic:
-                self.ActorDic[name].bindAnim(anim)
+                self.ActorDict[name].bindAnim(anim)
             messenger.send('DataH_loadFinish'+name)
             return
         else:
@@ -416,16 +416,16 @@ class dataHolder:
         # removeAnimation(self, name, anim)
         # This function will remove the specific animation "anim" from the actor named "name."
         #
-        # After remove compelete, it will send out two messages.
+        # After remove complete, it will send out two messages.
         # One is 'DataH_removeAnimFinish'+"name of the actor." It will be caught by Animation Panel of this actor.
         # The other is 'animRemovedFromNode,' this will be caught by property window of this actor.
         ###########################################################################
         if self.isActor(name):
-            self.ActorDic[name].unloadAnims([anim])
-            AnimDict = self.ActorDic[name].getAnimControlDict()
+            self.ActorDict[name].unloadAnims([anim])
+            AnimDict = self.ActorDict[name].getAnimControlDict()
             del AnimDict['lodRoot']['modelRoot'][anim]
             messenger.send('DataH_removeAnimFinish'+name)
-            messenger.send('animRemovedFromNode',[self.ActorDic[name],self.getAnimationDictFromActor(name)])
+            messenger.send('animRemovedFromNode',[self.ActorDict[name],self.getAnimationDictFromActor(name)])
         return
 
     def toggleLight(self):
@@ -489,7 +489,7 @@ class dataHolder:
     def getLightNode(self,lightName):
         ###########################################################################
         # getLightNode(self,lightName)
-        # This function will return the lightNode(seLigth) named 'lightName' back.
+        # This function will return the lightNode(seLight) named 'lightName' back.
         #
         # For more detail about creating light, please look the seLight.py.
         #
@@ -514,8 +514,8 @@ class dataHolder:
         ###########################################################################
         # Rename(self,nodePath,nName)
         # First, it will check the target object is legal to rename or not.
-        # this function now doesn't support user to rename everything on the scene gragh.
-        # If there already has object hase the same name with the target object,
+        # this function now doesn't support user to rename everything on the scene graph.
+        # If there already has object has the same name with the target object,
         # the new name will be changed.
         ###########################################################################
         oName = nodePath.getName()
@@ -527,13 +527,13 @@ class dataHolder:
             nName = nName + '_1'
 
         if self.isActor(oName):
-            self.ActorDic[nName]= self.ActorDic[oName]
+            self.ActorDict[nName]= self.ActorDict[oName]
             self.ActorRefDic[nName]= self.ActorRefDic[oName]
-            self.ActorDic[nName].setName(nName)
+            self.ActorDict[nName].setName(nName)
             if oName in self.blendAnimDict:
                 self.blendAnimDict[nName] = self.blendAnimDict[oName]
                 del self.blendAnimDict[oName]
-            del self.ActorDic[oName]
+            del self.ActorDict[oName]
             del self.ActorRefDic[oName]
         elif self.isModel(oName):
             self.ModelDic[nName]= self.ModelDic[oName]
@@ -596,7 +596,7 @@ class dataHolder:
         ###########################################################################
         # bindCurveToNode(self,node,curveCollection)
         # This function will maintain the curvesDict
-        # using the node name as a reference to assosiate a list which contains all curves related to that node.
+        # using the node name as a reference to associate a list which contains all curves related to that node.
         ###########################################################################
         name = node.getName()
         if name in self.curveDict:
@@ -611,8 +611,8 @@ class dataHolder:
         ###########################################################################
         # getCureveList(self, nodePath)
         # This function will return a list
-        # which contains all curves taht have been binded with the inout node
-        # If the input node has not been bindedwith any curve, it will return None.
+        # which contains all curves that have been binded with the in out node
+        # If the input node has not been binded with any curve, it will return None.
         ###########################################################################
         name = nodePath.getName()
         if name in self.curveDict:
@@ -623,7 +623,7 @@ class dataHolder:
     def removeCurveFromNode(self, nodePath, curveName):
         ###########################################################################
         # removeCurveFromNode(self, nodePath, curveName)
-        # This function will remove the "curveName" curve(Motion path data) from the nodaPath.
+        # This function will remove the "curveName" curve(Motion path data) from the nodePath.
         # After remove, it will send out a message.
         # 'curveRemovedFromNode'
         # This message will be caught by Property Window for this node.
@@ -646,7 +646,7 @@ class dataHolder:
     def getInfoOfThisNode(self, nodePath):
         ###########################################################################
         # getInfoOfThisNode(self, nodePath)
-        # This function will return a list which contains all object properies
+        # This function will return a list which contains all object properties
         # that will be used in property window.
         ###########################################################################
         type = ''
@@ -696,8 +696,8 @@ class dataHolder:
         # This function will return a Dictionary which contains the animation data in the actor "actorName".
         # The data inside is get from the actor, so, it can't be wrong...
         ###########################################################################
-        animControlDict = self.ActorDic[actorName].getAnimControlDict()
-        animNameList = self.ActorDic[actorName].getAnimNames()
+        animControlDict = self.ActorDict[actorName].getAnimControlDict()
+        animNameList = self.ActorDict[actorName].getAnimNames()
         if len(animNameList)==0:
             return {}
         animDict = {}
@@ -709,7 +709,7 @@ class dataHolder:
     def addDummyNode(self,nodePath):
         ###########################################################################
         # addDummyNode(self,nodePath)
-        # This function will add a dummy node into the scane and reparent it to nodePath which user put in.
+        # This function will add a dummy node into the scene and reparent it to nodePath which user put in.
         #
         # This dummy actually is just a default sphere model.
         #
@@ -752,7 +752,7 @@ class dataHolder:
             self.collisionDict[name].setTag('C_Y','%f'%pointC.getY())
             self.collisionDict[name].setTag('C_Z','%f'%pointC.getZ())
 
-        if self.collisionVisable:
+        if self.collisionVisible:
             self.collisionDict[name].show()
         #Manakel 2/12/2005: replace node by its nodepath
         base.cTrav.addCollider( self.collisionDict[name], self.CollisionHandler)
@@ -761,24 +761,24 @@ class dataHolder:
 
         return
 
-    def toggleCollisionVisable(self, visable):
+    def toggleCollisionVisible(self, visible):
         ###########################################################################
-        # toggleCollisionVisable(self, visable)
-        # This fucntion will toggle the visibility of all collision node in the scene.
+        # toggleCollisionVisible(self, visible)
+        # This dictionary will toggle the visibility of all collision node in the scene.
         ###########################################################################
-        if visable == 1:
-            self.collisionVisable = True
+        if visible == 1:
+            self.collisionVisible = True
             for name in self.collisionDict:
                 if self.collisionDict[name].isHidden():
                     self.collisionDict[name].show()
         else:
-            self.collisionVisable = False
+            self.collisionVisible = False
             for name in self.collisionDict:
                 if not self.collisionDict[name].isHidden():
                     self.collisionDict[name].hide()
 
-    def toggleParticleVisable(self, visable):
-        if not visable:
+    def toggleParticleVisible(self, visible):
+        if not visible:
             for name in self.particleNodes:
                 self.particleNodes[name].setTransparency(True)
                 self.particleNodes[name].setAlphaScale(0)
@@ -793,9 +793,9 @@ class dataHolder:
     def getBlendAnimAsDict(self, name):
         ###########################################################################
         # getBlendAnimAsDict(self, name)
-        # This function will return a dictionry
+        # This function will return a dictionary
         # which contains user blended animation data for actor named "name."
-        # The formate of thsi dictionary is
+        # The formate of this dictionary is
         # {"name of Blend Animation" : ["Animation A, Animation B, Effect(Float, 0~1)"]}
         ###########################################################################
         if name in self.blendAnimDict:
@@ -806,7 +806,7 @@ class dataHolder:
     def saveBlendAnim(self, actorName, blendName, animNameA, animNameB, effect):
         ###########################################################################
         # saveBlendAnim(self, actorName, blendName, animNameA, animNameB, effect)
-        # This function will save the blended Animation "blendname" for actor "actorNane"
+        # This function will save the blended Animation "blendname" for actor "actorName"
         # and keep the data in the blendAnimDict.
         #
         # Also, if this blend is the first blend animation that the target actor has,
@@ -830,7 +830,7 @@ class dataHolder:
         ###########################################################################
         # renameBlendAnim(self, actorName, nName, oName, animNameA, animNameB, effect)
         # This function is used to rename a exist blended animation named "oName" to "nName."
-        # The way it doing this is first remove the original blend fomr the actor
+        # The way it doing this is first remove the original blend from the actor
         # and then re-create a new one named "nName" in.
         # Because it is not just simply rename the animation,
         # it will also rewrite the data to the newest one.
@@ -842,7 +842,7 @@ class dataHolder:
     def removeBlendAnim(self, actorName, blendName):
         ###########################################################################
         # removeBlendAnim(self, actorName, blendName)
-        # This fucntion will remove the record of blended animation named "blendName"
+        # This function will remove the record of blended animation named "blendName"
         # from the actor named "actorName".
         #
         # Also, it will check that there is any blended animation remained for this actor,
@@ -868,7 +868,7 @@ class dataHolder:
         ###########################################################################
         objlist = ['camera'] # Default object you can select camera
         objlist.append(list(self.ModelDic.keys()))
-        objlist.append(list(self.ActorDic.keys()))
+        objlist.append(list(self.ActorDict.keys()))
         objlist.append(list(self.collisionDict.keys()))
         objlist.append(list(self.dummyDict.keys()))
         objlist.append(list(self.particleNodes.keys()))
@@ -884,8 +884,8 @@ class dataHolder:
             return camera
         elif name in self.ModelDic:
             return self.ModelDic[name]
-        elif name in self.ActorDic:
-            return self.ActorDic[name]
+        elif name in self.ActorDict:
+            return self.ActorDict[name]
         elif name in self.collisionDict:
             return self.collisionDict[name]
         elif name in self.dummyDict:
@@ -900,7 +900,7 @@ class dataHolder:
     def getControlSetting(self):
         ###########################################################################
         # getControlSetting(self)
-        # return tqwo things.
+        # return two things.
         # One is the type of the control. The other is the data about that control.
         # Now we only support keyboard control, so it will return a list.
         # The first object in the list is a reference to the target we want to control.
@@ -935,7 +935,7 @@ class dataHolder:
         # loadScene(self)
         # Opens a dialog box asking for a scene file to load.  It then removes
         # the current scene and opens the new one.
-        # It basically proceeds by executig the python file containing the scene
+        # It basically proceeds by executing the python file containing the scene
         # and then re-populating the various dictionaries based on the dictionaries
         # in the scene file hence reviving the state for the scene
         ###########################################################################
@@ -978,8 +978,8 @@ class dataHolder:
         ############################################################################
         # Populate Actor related Dictionaries
         ############################################################################
-        for actor in self.Scene.ActorDic:
-            self.ActorDic[actor]=self.Scene.ActorDic[actor]
+        for actor in self.Scene.ActorDict:
+            self.ActorDict[actor]=self.Scene.ActorDict[actor]
             #self.ActorRefDic[actor]=self.Scene.ActorRefDic[actor] # Old way of doing absolute paths
             self.ActorRefDic[actor]=Filename(dirName + "/" + self.Scene.ActorRefDic[actor]) # Relative Paths
             if(str(actor) in self.Scene.blendAnimDict):
@@ -1065,7 +1065,7 @@ class dataHolder:
                 vestige.removeNode()
 
         ############################################################################
-        # return the filename and update the scenegraph explorer window
+        # return the filename and update the Scene graph explorer window
         ############################################################################
         messenger.send('SGE_Update Explorer',[render])
         if(OpenFilename):

@@ -276,7 +276,7 @@ class lightingPanel(AppShell):
         # This function will be called when user click on
         # the "Delete" button on the panel.
         #
-        # Then, this function will send out a message with current seleted light
+        # Then, this function will send out a message with current selected light
         # "LP_removeLight"
         # Which will be caught by sceneEditor and pass to dataHolder to
         # complete the delete process.

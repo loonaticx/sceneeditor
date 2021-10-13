@@ -87,7 +87,7 @@ class ParticlePanel(AppShell):
         base.enableParticles()
 
     def onDestroy(self, event):
-        messenger.send('ParticlePanle_close')
+        messenger.send('ParticlePanel_close')
         return
 
     def createInterface(self):

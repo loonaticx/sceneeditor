@@ -79,7 +79,7 @@ class FileSaver:
         out_file.write(i1+"ModelDic={}# Stores all the models and static geometry\n")
         out_file.write(i1+"ModelRefDic={}# Stores the paths to the models\n")
         out_file.write("\n")
-        out_file.write(i1+"ActorDic={}# Stores all the actors\n")
+        out_file.write(i1+"ActorDict={}# Stores all the actors\n")
         out_file.write(i1+"ActorRefDic={}# Stores the paths to the actors\n")
         out_file.write(i1+"ActorAnimsDic={}# Stores the animations for each actor\n")
         out_file.write(i1+"blendAnimDict={}# Stores all the blended animations\n")
@@ -269,10 +269,10 @@ class FileSaver:
         out_file.write(i2+"##########################################################################################################\n")
         out_file.write(i2+"# Code for all the Actors and animations\n")
         out_file.write(i2+"# To access the Actors\n")
-        out_file.write(i2+"# theScene.ActorDic[\'Actor_Name\']\n")
-        out_file.write(i2+"# theScene.ActorDic[\'Actor_Name\'].play(\'Animation_Name\')\n")
+        out_file.write(i2+"# theScene.ActorDict[\'Actor_Name\']\n")
+        out_file.write(i2+"# theScene.ActorDict[\'Actor_Name\'].play(\'Animation_Name\')\n")
         out_file.write(i2+"##########################################################################################################\n")
-        for actor in AllScene.ActorDic:
+        for actor in AllScene.ActorDict:
             out_file.write("\n")
             actorS=str(actor)
 
@@ -338,19 +338,19 @@ class FileSaver:
 
                 #Transformation Code
                 out_file.write(i2+"# Transforming the Actor\n")
-                out_file.write(i2+ "self."+ actorS + ".setPosHprScale(%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f)\n"% (AllScene.ActorDic[actor].getX(),AllScene.ActorDic[actor].getY(),AllScene.ActorDic[actor].getZ(),AllScene.ActorDic[actor].getH(),AllScene.ActorDic[actor].getP(),AllScene.ActorDic[actor].getR(),AllScene.ActorDic[actor].getSx(),AllScene.ActorDic[actor].getSy(),AllScene.ActorDic[actor].getSz()))
+                out_file.write(i2+ "self."+ actorS + ".setPosHprScale(%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f)\n"% (AllScene.ActorDict[actor].getX(),AllScene.ActorDict[actor].getY(),AllScene.ActorDict[actor].getZ(),AllScene.ActorDict[actor].getH(),AllScene.ActorDict[actor].getP(),AllScene.ActorDict[actor].getR(),AllScene.ActorDict[actor].getSx(),AllScene.ActorDict[actor].getSy(),AllScene.ActorDict[actor].getSz()))
 
-                if(AllScene.ActorDic[actor].hasTransparency()):
+                if(AllScene.ActorDict[actor].hasTransparency()):
                     out_file.write(i2+"# Alpha\n")
                     out_file.write(i2+ "self."+ actorS + ".setTransparency(1)\n")
-                    clr=AllScene.ActorDic[actor].getColor()
+                    clr=AllScene.ActorDict[actor].getColor()
                     out_file.write(i2+ "self."+ actorS + ".setColor(%.4f,%.4f,%.4f,%.4f)\n"%(clr.getX(),clr.getY(),clr.getZ(),clr.getW()))
 
                 out_file.write(i2+ "self."+ actorS + ".reparentTo(render)\n")
 
                 out_file.write("\n")
-                out_file.write(i2+ "# Save Metadata...can be retrieved by doing theScene.ActorDic[\"Actor_Name\"].getTag(\"Metadata\")\n")
-                out_file.write(i2+ "self."+ actorS + ".setTag(\"Metadata\",\"" + AllScene.ActorDic[actor].getTag("Metadata") + "\")\n")
+                out_file.write(i2+ "# Save Metadata...can be retrieved by doing theScene.ActorDict[\"Actor_Name\"].getTag(\"Metadata\")\n")
+                out_file.write(i2+ "self."+ actorS + ".setTag(\"Metadata\",\"" + AllScene.ActorDict[actor].getTag("Metadata") + "\")\n")
 
                 out_file.write("\n")
                 out_file.write(i2+ "# Fill in the dictionaries which are used by level Ed to reload state\n")
@@ -384,10 +384,10 @@ class FileSaver:
                 print("LOAD ANIM STRING AFTER" + theloadAnimString)
                 out_file.write(i2+ i1+"self."+ actorS + ".loadAnims(" + theloadAnimString +")\n") # Now with new relative paths based on editor invocation
 
-                out_file.write(i2+ "self.ActorDic[\'" + actorS + "\']=self." + AllScene.ActorDic[actor].getName()+"\n")
+                out_file.write(i2+ "self.ActorDict[\'" + actorS + "\']=self." + AllScene.ActorDict[actor].getName()+"\n")
                 #out_file.write(i2+ "self.ActorRefDic[\'" + actorS + "\']=Filename(\'"+AllScene.ActorRefDic[actor].getFullpath() +"\')\n") # Old way with absolute paths
                 out_file.write(i2+ "self.ActorRefDic[\'" + actorS + "\']=\'"+ AllScene.ActorRefDic[actor].getBasename() +"\'\n")# Relative paths
-                out_file.write(i2+ "self.ActorDic[\'"+ actorS + "\'].setName(\'"+ actorS +"\')\n")
+                out_file.write(i2+ "self.ActorDict[\'"+ actorS + "\'].setName(\'"+ actorS +"\')\n")
                 if(actor in AllScene.blendAnimDict): # Check if a dictionary of blended animations exists
                     out_file.write(i2+ "self.blendAnimDict[\"" + actorS +"\"]=" + str(AllScene.blendAnimDict[actor]) + "\n")
 
@@ -409,10 +409,10 @@ class FileSaver:
             solid=AllScene.collisionDict[collnode].node().getSolid(0)
             nodetype=solid.getType().getName()
 
-            if(nodetype=="CollisionSphere"): #Save Collison Sphere
+            if(nodetype=="CollisionSphere"): #Save Collision Sphere
                 out_file.write(i2+"collSolid=CollisionSphere(%.3f,%.3f,%.3f,%.3f)\n"%(solid.getCenter().getX(),solid.getCenter().getY(),solid.getCenter().getZ(),solid.getRadius()))
                 pass
-            elif(nodetype=="CollisionPolygon"): #Save Collison Polygon
+            elif(nodetype=="CollisionPolygon"): #Save Collision Polygon
 
                 ax=AllScene.collisionDict[collnode].getTag("A_X")
                 ay=AllScene.collisionDict[collnode].getTag("A_Y")
@@ -433,7 +433,7 @@ class FileSaver:
 
                 pass
 
-            elif(nodetype=="CollisionSegment"): #Save Collison Segment
+            elif(nodetype=="CollisionSegment"): #Save Collision Segment
                 A=AllScene.collisionDict[collnode].node().getSolid(0).getPointA()
                 B=AllScene.collisionDict[collnode].node().getSolid(0).getPointB()
 
@@ -446,7 +446,7 @@ class FileSaver:
 
                 pass
 
-            elif(nodetype=="CollisionRay"): #Save Collison Ray
+            elif(nodetype=="CollisionRay"): #Save Collision Ray
                 P =  AllScene.collisionDict[collnode].node().getSolid(0).getOrigin()
                 V =  AllScene.collisionDict[collnode].node().getSolid(0).getDirection()
 
@@ -558,7 +558,7 @@ class FileSaver:
         # Enable Lighting
         ####################################################################################################################################################
 
-        out_file.write(i2+ "# Enable Ligthing\n")
+        out_file.write(i2+ "# Enable Lighting\n")
         out_file.write(i2+ "render.node().setAttrib(self.lightAttrib)\n")
         out_file.write("\n")
 
@@ -644,7 +644,7 @@ class FileSaver:
 
         out_file.write(i2+"##########################################################################################################\n")
         out_file.write(i2+"# Reparenting\n")
-        out_file.write(i2+"# A final pass is done on setting all the scenegraph hierarchy after all objects are laoded\n")
+        out_file.write(i2+"# A final pass is done on setting all the scenegraph hierarchy after all objects are loaded\n")
         out_file.write(i2+"##########################################################################################################\n\n")
 
         for model in AllScene.ModelDic:
@@ -674,9 +674,9 @@ class FileSaver:
             out_file.write(i2+ "self.dummyDict[\'" + dummyS + "\']=self." + AllScene.dummyDict[dummy].getName()+"\n")
             out_file.write(i2+"\n")
 
-        for actor in AllScene.ActorDic:
+        for actor in AllScene.ActorDict:
             actorS=str(actor)
-            parent=AllScene.ActorDic[actor].getParent().getName()
+            parent=AllScene.ActorDict[actor].getParent().getName()
             if(parent=="render" or parent=="camera"):
                 out_file.write(i2+ "self."+ actorS + ".reparentTo(" + parent + ")\n")
             else:
@@ -685,7 +685,7 @@ class FileSaver:
                 else:
                     out_file.write(i2+ "self."+ actorS + ".reparentTo(self." + parent + ")\n")
 
-            out_file.write(i2+ "self.ActorDic[\'" + actorS + "\']=self." + AllScene.ActorDic[actor].getName()+"\n")
+            out_file.write(i2+ "self.ActorDict[\'" + actorS + "\']=self." + AllScene.ActorDict[actor].getName()+"\n")
             out_file.write(i2+"\n")
 
 
@@ -706,7 +706,7 @@ class FileSaver:
             out_file.write(i2+"self.collisionDict[\"" + collnodeS + "\"].setPosHprScale(%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f,%.3f)\n"%(dictelem.getX(),dictelem.getY(),dictelem.getZ(),dictelem.getH(),dictelem.getP(),dictelem.getR(),dictelem.getSx(),dictelem.getSy(),dictelem.getSz()))
             out_file.write(i2+"self.collisionDict[\"" + collnodeS + "\"].setTag(\"Metadata\",\"" + AllScene.collisionDict[collnode].getTag("Metadata") + "\")\n")
             out_file.write(i2+"self.collisionDict[\"" + collnodeS + "\"].show()\n")
-            if(nodetype=="CollisionPolygon"): #Save Collison Polygon... the reason we need to use setTag here is because there is no inbuilt way of saving transforms for collision polys
+            if(nodetype=="CollisionPolygon"): #Save Collision Polygon... the reason we need to use setTag here is because there is no inbuilt way of saving transforms for collision polys
 
                 ax=float(AllScene.collisionDict[collnode].getTag("A_X"))
                 ay=float(AllScene.collisionDict[collnode].getTag("A_Y"))

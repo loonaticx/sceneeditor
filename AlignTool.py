@@ -160,7 +160,7 @@ class AlignTool(AppShell):
     def onDestroy(self, event):
         messenger.send('ALW_close', [self.nodePath.getName()])
         '''
-        If you have open any thing, please rewrite here!
+        If you have open anything, please rewrite here!
         '''
         pass
 

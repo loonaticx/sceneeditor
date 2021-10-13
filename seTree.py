@@ -4,11 +4,11 @@
 # Altered by Yi-Hong Lin, yihhongl@andrew.cmu.edu, 2004
 #
 # This class actually decides the behavior of the sceneGraphExplorer
-# You might feel it realy looks like the original one, but we actually did a lots of change in it.
+# You might feel it really looks like the original one, but we actually did a lots of change in it.
 # such as, when selection happend in other place, such as picking directly inside the scene. or,
 # when user removed something by hot key.
 # The rename process has also been changed. It won't be rename in here anymore.
-# Instead, here we will send out a message to sceneEditor to reaname the target.
+# Instead, here we will send out a message to sceneEditor to rename the target.
 #
 #################################################################
 
@@ -418,7 +418,7 @@ class TreeItem:
         """Called when item selected."""
 
     def GetTextForEdit(self):
-        """Called before editting the item."""
+        """Called before editing the item."""
 
 
 

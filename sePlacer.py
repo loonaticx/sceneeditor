@@ -791,7 +791,7 @@ class Placer(AppShell):
         self.orbitFromCS.removeNode()
         self.orbitToCS.removeNode()
         # send out a message to let sceneEditor know that placer panel has been closed.
-        # Also, stop accepting the updata message from sceneEditor
+        # Also, stop accepting the update message from sceneEditor
         messenger.send('Placer_close')
         self.ignore('placerUpdate')
 
