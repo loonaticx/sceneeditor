@@ -1,0 +1,417 @@
+<CoordinateSystem> { Z-Up }
+
+<Comment> {
+  "bam2egg '.\models\misc\sphere.bam' '.\models\misc\sphere.egg'"
+}
+<VertexPool> sphere.egg {
+  <Vertex> 0 {
+    -0.525731980800629 0 -0.850650012493134
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 1 {
+    -0.894427001476288 1.56526458461315e-09 -0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 2 {
+    -0.723607003688812 0.525731027126312 -0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 3 {
+    -0.162460997700691 0.500001013278961 -0.850650012493134
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 4 {
+    -0.276392996311188 0.850651025772095 -0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 5 {
+    0.276392996311188 0.850651025772095 -0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 6 {
+    0.425325989723206 0.309017986059189 -0.850650012493134
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 7 {
+    0.723607003688812 0.525731027126312 -0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 8 {
+    0.894427001476288 0 -0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 9 {
+    0.951057016849518 -0.30901700258255 0
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 10 {
+    0.723607003688812 -0.525731980800629 0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 11 {
+    0.587785005569458 -0.80901700258255 0
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 12 {
+    -0.162459999322891 -0.500001013278961 -0.850650012493134
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 13 {
+    -0.276394009590149 -0.850651025772095 -0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 14 {
+    -0.723607003688812 -0.525731027126312 -0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 15 {
+    -0.951056003570557 -0.30901700258255 0
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 16 {
+    -0.894427001476288 1.56526458461315e-09 0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 17 {
+    -0.951056003570557 0.30901700258255 0
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 18 {
+    -0.587785005569458 0.80901700258255 0
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 19 {
+    -0.276392996311188 0.850651025772095 0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 20 {
+    2.69455724399847e-09 1 0
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 21 {
+    0.425325989723206 -0.30901700258255 -0.850650012493134
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 22 {
+    0.723607003688812 -0.525731027126312 -0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 23 {
+    0.587785005569458 0.80901700258255 0
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 24 {
+    0.723607003688812 0.525731027126312 0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 25 {
+    0.951057016849518 0.30901700258255 0
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 26 {
+    2.69272737440929e-09 -1 0
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 27 {
+    -0.276394009590149 -0.850651025772095 0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 28 {
+    -0.587785005569458 -0.80901700258255 0
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 29 {
+    0.525731980800629 0 0.850650012493134
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 30 {
+    0.894427001476288 0 0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 31 {
+    0.162460997700691 0.500001013278961 0.850650012493134
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 32 {
+    0.276394009590149 0.850651025772095 0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 33 {
+    -0.425325989723206 0.309017986059189 0.850650012493134
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 34 {
+    -0.723605990409851 0.525731980800629 0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 35 {
+    -0.425325989723206 -0.30901700258255 0.850650012493134
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 36 {
+    -0.723607003688812 -0.525730013847351 0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 37 {
+    0.162459999322891 -0.500001013278961 0.850650012493134
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 38 {
+    0.276392012834549 -0.850651025772095 0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 39 {
+    -2.04371297662931e-09 0 -1
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 40 {
+    2.04357308852821e-09 0 1
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+  <Vertex> 41 {
+    0.276392996311188 -0.850651025772095 -0.447212994098663
+    <RGBA> { 0.945000052452087 0.945000052452087 0.945000052452087 1 }
+  }
+}
+<Group> Sphere {
+  <Polygon> {
+    <VertexRef> { 0 1 2 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 3 4 5 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 6 7 8 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 9 10 11 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 12 13 14 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 15 16 17 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 18 19 20 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 21 8 22 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 23 24 25 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 26 27 28 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 29 30 24 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 24 30 25 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 8 9 22 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 22 9 11 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 8 7 25 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 25 7 23 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 31 32 19 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 19 32 20 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 5 4 20 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 20 4 18 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 33 34 16 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 16 34 17 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 2 1 17 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 17 1 15 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 35 36 27 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 27 36 28 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 14 13 28 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 28 13 26 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 37 38 10 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 10 38 11 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 39 6 21 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 21 6 8 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 5 20 23 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 23 20 32 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 23 32 24 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 24 32 31 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 24 31 29 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 29 31 40 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 23 7 5 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 5 7 6 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 5 6 3 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 3 6 39 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 2 17 18 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 18 17 34 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 18 34 19 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 19 34 33 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 19 33 31 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 31 33 40 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 18 4 2 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 2 4 3 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 2 3 0 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 0 3 39 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 14 28 15 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 15 28 36 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 15 36 16 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 16 36 35 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 16 35 33 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 33 35 40 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 15 1 14 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 14 1 0 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 14 0 12 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 12 0 39 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 40 37 29 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 29 37 10 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 29 10 30 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 30 10 9 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 30 9 25 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 25 9 8 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 26 13 41 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 41 13 12 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 41 12 21 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 21 12 39 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 40 35 37 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 37 35 27 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 37 27 38 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 38 27 26 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 38 26 11 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 11 26 41 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 11 41 22 <Ref> { sphere.egg } }
+  }
+  <Polygon> {
+    <VertexRef> { 22 41 21 <Ref> { sphere.egg } }
+  }
+}
