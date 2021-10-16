@@ -873,7 +873,7 @@ class myLevelEditor(AppShell):
         # In the future try and provide merging of two scenes
 
         if(self.CurrentFileName or self.Dirty):
-            saveScene = tkMessageBox._show("Load scene","Save the current scene?",icon = tkMessageBox.QUESTION,type = tkMessageBox.YESNOCANCEL)
+            saveScene = messagebox._show("Load scene","Save the current scene?",icon = messagebox.QUESTION,type = messagebox.YESNOCANCEL)
             if (saveScene == "yes"):
                 self.saveScene()
             elif (saveScene == "cancel"):
