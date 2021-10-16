@@ -9,12 +9,6 @@ ShowBase()
 
 from direct.showbase.TkGlobal import spawnTkLoop
 
-if sys.version_info >= (3, 0):
-    from tkinter import *
-    from tkinter.filedialog import *
-else:
-    from Tkinter import *
-    from tkFileDialog import *
 
 from direct.directtools.DirectGlobals import *
 from direct.tkwidgets.AppShell import*
@@ -35,6 +29,11 @@ from MetadataPanel import *
 from seBlendAnimPanel import *
 from controllerWindow import *
 from AlignTool import *
+from tkinter import *
+from tkinter.filedialog import askopenfilename, asksaveasfilename
+import tkinter as tk
+root = tk.Tk()
+root.withdraw()
 
 
 
@@ -946,7 +945,7 @@ class myLevelEditor(AppShell):
         pass
 
     def saveAsBam(self):
-        fileName = tkFileDialog.asksaveasfilename(filetypes = [("BAM",".bam")],title = "Save Scenegraph as Bam file")
+        fileName = asksaveasfilename(filetypes = [("BAM",".bam")],title = "Save Scenegraph as Bam file")
         theScene=render.find("**/Scene")
         if not theScene is None:
             theScene.writeBamFile(fileName)
@@ -955,7 +954,7 @@ class myLevelEditor(AppShell):
         print(" Scenegraph saved as :" +str(fileName))
 
     def loadFromBam(self):
-        fileName = tkFileDialog.askopenfilename(filetypes = [("BAM",".bam")],title = "Load Scenegraph from Bam file")
+        fileName = askopenfilename(filetypes = [("BAM",".bam")],title = "Load Scenegraph from Bam file")
         if not fileName is None:
             d=path(fileName)
             scene=loader.loadModel(d.relpath())
@@ -969,7 +968,7 @@ class myLevelEditor(AppShell):
         # Instantiate FileSaver from seFileSaver.py and pass it the filename
         #################################################################
 
-        fileName = tkFileDialog.asksaveasfilename(filetypes = [("PY","py")],title = "Save Scene")
+        fileName = asksaveasfilename(filetypes = [("PY","py")],title = "Save Scene")
         if(not fileName):
             return
         fCheck=Filename(fileName)

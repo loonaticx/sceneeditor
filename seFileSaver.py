@@ -7,8 +7,11 @@ from panda3d.core import *
 
 from direct.showbase.ShowBaseGlobal import *
 import os
+from os.path import exists
 import shutil
 import string
+
+from panda3d.egg import *
 
 ####################################################################################################################################################
 #### These modules are modified versions of Disney's equivalent modules
@@ -167,9 +170,9 @@ class FileSaver:
                     texfilename=texture.getFilename()
                     fnamelist.append(texfilename.getFullpath())
                     oldFilename=Filename(Filename(AllScene.ModelRefDic[model].getDirname()),texfilename)
-                    if(not oldFilename.isRegularFile()):
-                        if(texfilename.resolveFilename(getTexturePath(),"")):
-                            oldFilename=texfilename
+                    #if(not oldFilename.isRegularFile()): # ret true if filename exists and is a file
+                    #    if(texfilename.resolveFilename(getTexturePath(),"")): # Texture filename
+                    #        oldFilename=texfilename
                     oldtexpath=oldFilename.toOsSpecific()
 
                     newtexpath=dirname + "/" + texfilename.getBasename()
@@ -178,7 +181,8 @@ class FileSaver:
 
                     print("TEXTURE SAVER:: copying" + oldtexpath + " to " + newtexpathSpecific)
                     if(oldtexpath != newtexpathSpecific):
-                        shutil.copyfile(oldtexpath,newtexpathSpecific)
+                        if exists(oldtexpath):
+                            shutil.copyfile(oldtexpath,newtexpathSpecific)
 
 
 
@@ -298,7 +302,8 @@ class FileSaver:
                     oldFilename=Filename(Filename(AllScene.ActorRefDic[actor].getDirname()),texfilename)
                     if(not oldFilename.isRegularFile()):
                         if(texfilename.resolveFilename(getTexturePath(),"")):
-                            oldFilename=texfilename
+                            if exists(oldFilename):
+                                oldFilename=texfilename
                     oldtexpath=oldFilename.toOsSpecific()
 
 
@@ -307,7 +312,8 @@ class FileSaver:
                     newtexpathSpecific=newtexpathF.toOsSpecific()
                     print("TEXTURE SAVER:: copying" + oldtexpath + " to " + newtexpathSpecific)
                     if(oldtexpath != newtexpathSpecific):
-                        shutil.copyfile(oldtexpath,newtexpathSpecific)
+                        if exists(oldtexpath):
+                            shutil.copyfile(oldtexpath,newtexpathSpecific)
 
 
                 # Copy the file over to the relative directory
