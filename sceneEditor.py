@@ -35,8 +35,6 @@ import tkinter as tk
 root = tk.Tk()
 root.withdraw()
 
-
-
 import os
 import string
 from direct.tkwidgets import Dial
@@ -1429,7 +1427,7 @@ class myLevelEditor(AppShell):
             hpr = self.nodeSelected.getHpr()
             scale = self.nodeSelected.getScale()
             if ((self.oPos != pos )or(self.oScale != scale)or(self.oHpr != hpr)):
-                messenger.send('forPorpertyWindow'+self.nodeSelected.getName(),[pos, hpr, scale])
+                messenger.send('forPropertyWindow'+self.nodeSelected.getName(),[pos, hpr, scale])
                 messenger.send('placerUpdate')
                 self.oPos = pos
                 self.oScale = scale

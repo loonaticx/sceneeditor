@@ -15,7 +15,7 @@ else:
 
 # Define the Category
 KEYBOARD = 'Keyboard-'
-TRACKER = 'Tarcker-'
+TRACKER = 'Tracker-'
 
 class controllerWindow(AppShell):
     #################################################################

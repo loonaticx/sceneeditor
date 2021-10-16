@@ -77,32 +77,32 @@ class propertyWindow(AppShell,Pmw.MegaWidget):
         # Creating different interface depands on object's type
         if self.type == 'camera':
             self.cameraInterface(self.contentFrame)
-            self.accept('forPorpertyWindow'+self.name, self.trackDataFromSceneCamera)
+            self.accept('forPropertyWindow'+self.name, self.trackDataFromSceneCamera)
         elif self.type == 'Model':
             self.modelInterface(self.contentFrame)
-            self.accept('forPorpertyWindow'+self.name, self.trackDataFromSceneModel)
+            self.accept('forPropertyWindow'+self.name, self.trackDataFromSceneModel)
         elif self.type == 'Actor':
             self.modelInterface(self.contentFrame)
             self.actorInterface(self.contentFrame)
-            self.accept('forPorpertyWindow'+self.name, self.trackDataFromSceneActor)
+            self.accept('forPropertyWindow'+self.name, self.trackDataFromSceneActor)
             pass
         elif self.type == 'Light':
             self.lightInterface(self.contentFrame)
-            self.accept('forPorpertyWindow'+self.name, self.trackDataFromSceneLight)
+            self.accept('forPropertyWindow'+self.name, self.trackDataFromSceneLight)
             pass
         elif self.type == 'dummy':
             self.dummyInterface(self.contentFrame)
-            self.accept('forPorpertyWindow'+self.name, self.trackDataFromSceneDummy)
+            self.accept('forPropertyWindow'+self.name, self.trackDataFromSceneDummy)
             pass
         elif self.type == 'collisionNode':
             self.collisionInterface(self.contentFrame)
-            self.accept('forPorpertyWindow'+self.name, self.trackDataFromSceneCollision)
+            self.accept('forPropertyWindow'+self.name, self.trackDataFromSceneCollision)
             pass
         elif self.type == 'Special':
             # If user try to open the property window for node "SEditor"
             # It will show the grid property.
             self.gridInterface(self.contentFrame)
-            self.accept('forPorpertyWindow'+self.name, None)
+            self.accept('forPropertyWindow'+self.name, None)
             pass
 
         self.curveFrame = None
@@ -119,7 +119,7 @@ class propertyWindow(AppShell,Pmw.MegaWidget):
         self.menuBar.destroy()
 
     def onDestroy(self, event):
-        self.ignore('forPorpertyWindow'+self.name)
+        self.ignore('forPropertyWindow'+self.name)
         messenger.send('PW_close', [self.name])
         '''
         If you have open any thing, please rewrite here!
@@ -397,7 +397,7 @@ class propertyWindow(AppShell,Pmw.MegaWidget):
         # Create the interface for camera node.
         #################################################################
 
-        ## Type entry : unchageable
+        ## Type entry : unchangeable
         widget = self.createEntryField(contentFrame,'Type:',
                                        value = self.type,
                                        command = None,

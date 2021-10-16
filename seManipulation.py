@@ -751,6 +751,7 @@ class ObjectHandles(NodePath,DirectObject):
     def multiplyScalingFactorBy(self, factor):
         taskMgr.remove('resizeObjectHandles')
         sf = self.ohScalingFactor = self.ohScalingFactor * factor
+        # todo: make this a lerp interval
         self.scalingNode.lerpScale(sf,sf,sf, 0.5,
                                    blendType = 'easeInOut',
                                    task = 'resizeObjectHandles')
@@ -763,6 +764,7 @@ class ObjectHandles(NodePath,DirectObject):
         minDim = min(SEditor.dr.nearWidth, SEditor.dr.nearHeight)
         sf = 0.4 * minDim * (pos[1]/SEditor.dr.near)
         self.ohScalingFactor = sf
+        # todo: make this a lerp interval
         self.scalingNode.lerpScale(sf,sf,sf, 0.5,
                                    blendType = 'easeInOut',
                                    task = 'resizeObjectHandles')

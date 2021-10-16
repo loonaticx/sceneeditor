@@ -285,7 +285,7 @@ class AnimPanel(AppShell):
             taskMgr.add(self.playTask, self.id + '_UpdateTask')
             self.stopButton.config(state=NORMAL)
         else:
-            print('----Illegal Animaion name!!', self.animName)
+            print('----Illegal Animation name!!', self.animName)
         return
 
     def playTask(self, task):
@@ -564,7 +564,7 @@ class LoadAnimPanel(AppShell):
     def Browse_1(self):
         #################################################################
         # Browse_1(self)
-        # when the browse button pused, this function will be called.
+        # when the browse button pressed, this function will be called.
         # Do nothing but open a file dialog for user to set the path to target file
         # Then, set the path back to the entry on the panel.
         #################################################################
@@ -604,7 +604,7 @@ class LoadAnimPanel(AppShell):
     def ok_press(self):
         #################################################################
         # ok_press(Self)
-        # This functiion will be called when user click on the "OK"
+        # This function will be called when user click on the "OK"
         # button. This function will send a message along with the animation
         # file we wish to load for this actor.
         # Then, it will close the panel itself.

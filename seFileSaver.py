@@ -3,6 +3,19 @@
 # This code saves the scene out as python code... the scene is stored in the various dictionaries in "dataHolder.py" ...the class "AllScene"
 #
 ####################################################################################################################################################
+
+"""
+WARNING
+THESE MODULES NEED TO BE IMPLEMENTED WHEN EXPORTING
+from direct.showbase.DirectObject import DirectObject
+from panda3d.core import LightAttrib
+from panda3d.core import CollisionHandlerEvent
+from panda3d.core import CollisionTraverser
+from panda3d.core import PointLight
+(ok honestly panda3d.core * can be done at this poitn)
+
+"""
+
 from panda3d.core import *
 
 from direct.showbase.ShowBaseGlobal import *

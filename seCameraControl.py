@@ -42,6 +42,7 @@ class DirectCameraControl(DirectObject):
         self.coaMarkerRef = SEditor.group.attachNewNode('coaMarkerRef')
         self.camManipRef = SEditor.group.attachNewNode('camManipRef')
         t = CAM_MOVE_DURATION
+        # worst controls EVER
         self.actionEvents = [
             ['DIRECT-mouse2', self.mouseFlyStart],
             ['DIRECT-mouse2Up', self.mouseFlyStop],
