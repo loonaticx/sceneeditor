@@ -3,6 +3,7 @@
 ###############################
 from direct.showbase.TkGlobal import*
 import Pmw
+import SceneGlobals
 from direct.tkwidgets import Dial
 from direct.tkwidgets import Floater
 import sys
@@ -717,7 +718,7 @@ class dataHolder:
         number = len(self.dummyDict)
         number += 1
         name = 'Dummy%d'%number
-        self.dummyModel = loader.loadModel( "models/misc/sphere" )
+        self.dummyModel = loader.loadModel(SceneGlobals.dummyModelPath) # todo make this customizable
         self.dummyModel.reparentTo(nodePath)
         while self.isInScene(name):
             name = name + '_1'
@@ -1044,7 +1045,7 @@ class dataHolder:
         ############################################################################
         for effect in self.Scene.particleDict:
             theeffect=self.Scene.particleDict[effect]
-            emitter=loader.loadModel("sphere")
+            emitter=loader.loadModel("models/misc/sphere")
             emitter.setPosHprScale(theeffect.getX(),theeffect.getY(),theeffect.getZ(),theeffect.getH(),theeffect.getP(),theeffect.getR(),theeffect.getSx(),theeffect.getSy(),theeffect.getSz())
             theeffect.setPos(0,0,0)
             theeffect.setName(str(effect))

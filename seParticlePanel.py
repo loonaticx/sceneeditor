@@ -54,7 +54,7 @@ class ParticlePanel(AppShell):
             particles.enable()
             pe = seParticleEffect.ParticleEffect('effect1', particles)
             self.particleEffect = pe
-            self.emitter=loader.loadModel("sphere")
+            self.emitter=loader.loadModel("models/misc/sphere")
             pe.reparentTo(self.emitter)
             self.emitter.setName("effect1")
             self.emitter.reparentTo(render)
@@ -1732,7 +1732,7 @@ class ParticlePanel(AppShell):
             self.effectsDict[name] = effect
             self.updateMenusAndLabels()
             self.selectEffectNamed(name)
-            self.emitter=loader.loadModel("sphere")
+            self.emitter=loader.loadModel("models/misc/sphere")
             self.emitter.setName(name)
             effect.reparentTo(self.emitter)
             self.emitter.reparentTo(render)
