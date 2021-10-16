@@ -12,6 +12,7 @@ import sePlacer
 import seForceGroup
 import seParticles
 import seParticleEffect
+from panda3d.physics import *
 
 
 if sys.version_info >= (3, 0):
@@ -590,24 +591,28 @@ class ParticlePanel(AppShell):
         f = Frame(spritePage)
         Label(f, width = 12, text = 'Texture Type:').pack(side = LEFT)
         self.rendererSpriteSourceType = IntVar()
-        self.rendererSpriteSourceType.set(SpriteParticleRenderer.STTexture)
+        self.rendererSpriteSourceType.set(1) # fixme
+        #self.rendererSpriteSourceType.set(SpriteParticleRenderer.getTexture()) # fixme
         self.rendererSpriteSTTexture = self.createRadiobutton(
             f, 'left',
             'Sprite Renderer', 'Texture Type',
             'Sprite particle renderer created from texture file',
-            self.rendererSpriteSourceType, SpriteParticleRenderer.STTexture,
+            #self.rendererSpriteSourceType, SpriteParticleRenderer.getTexture(), # fixme
+            self.rendererSpriteSourceType, 1,
             self.setSpriteSourceType)
         self.rendererSpriteSTTexture = self.createRadiobutton(
             f, 'left',
             'Sprite Renderer', 'NodePath Type',
             'Sprite particle renderer created from node path',
-            self.rendererSpriteSourceType, SpriteParticleRenderer.STFromNode,
+            self.rendererSpriteSourceType, 1, #SpriteParticleRenderer.STFromNode, (1 is placeholder)
             self.setSpriteSourceType)
         f.pack(fill = X)
         f = Frame(spritePage)
         Label(f, width = 6, text = 'Texture:').pack(side = LEFT)
         self.rendererSpriteTexture = StringVar()
-        self.rendererSpriteTexture.set(SpriteParticleRenderer.sourceTextureName)
+        #self.rendererSpriteTexture.set(SpriteParticleRenderer.sourceTextureName)
+        self.rendererSpriteTexture.set("fixme")
+
         self.rendererSpriteTextureEntry = Entry(
             f, width = 12,
             textvariable = self.rendererSpriteTexture)
@@ -616,14 +621,17 @@ class ParticlePanel(AppShell):
         f = Frame(spritePage)
         Label(f, width = 6, text = 'File:').pack(side = LEFT)
         self.rendererSpriteFile = StringVar()
-        self.rendererSpriteFile.set(SpriteParticleRenderer.sourceFileName)
+        #self.rendererSpriteFile.set(SpriteParticleRenderer.sourceFileName)
+        self.rendererSpriteFile.set("fixme")
         self.rendererSpriteFileEntry = Entry(
             f, width = 12,
             textvariable = self.rendererSpriteFile)
         self.rendererSpriteFileEntry.pack(side = LEFT, expand = 1, fill = X)
         Label(f, width = 6, text = 'Node:').pack(side = LEFT)
         self.rendererSpriteNode = StringVar()
-        self.rendererSpriteNode.set(SpriteParticleRenderer.sourceNodeName)
+        #self.rendererSpriteNode.set(SpriteParticleRenderer.sourceNodeName)
+        self.rendererSpriteNode.set("fixme")
+    
         self.rendererSpriteNodeEntry = Entry(
             f, width = 6,
             textvariable = self.rendererSpriteNode)
@@ -1616,7 +1624,7 @@ class ParticlePanel(AppShell):
         self.particles.renderer.setLifeScale(lScale)
     # Sprite #
     def setSpriteSourceType(self):
-        if self.rendererSpriteSourceType.get() == SpriteParticleRenderer.STTexture:
+        if self.rendererSpriteSourceType.get() == SpriteParticleRenderer.getTexture():
             self.rendererSpriteTextureEntry['state'] = 'normal'
             self.rendererSpriteFileEntry['state'] = 'disabled'
             self.rendererSpriteNodeEntry['state'] = 'disabled'
@@ -1631,7 +1639,7 @@ class ParticlePanel(AppShell):
             self.rendererSpriteFileEntry['background'] = '#FFFFFF'
             self.rendererSpriteNodeEntry['background'] = '#FFFFFF'
     def setRendererSpriteTexture(self):
-        if self.rendererSpriteSourceType.get() == SpriteParticleRenderer.STTexture:
+        if self.rendererSpriteSourceType.get() == SpriteParticleRenderer.getTexture():
             self.particles.renderer.setTextureFromFile(self.rendererSpriteTexture.get())
         else:
             self.particles.renderer.setTextureFromNode(

@@ -21,7 +21,7 @@ class Particles(ParticleSystem):
             Particles.id += 1
         else:
             self.name = name
-        ParticleSystem.ParticleSystem.__init__(self, poolSize)
+        ParticleSystem.__init__(self, poolSize)
         # self.setBirthRate(0.02)
         # self.setLitterSize(10)
         # self.setLitterSpread(0)
@@ -87,16 +87,16 @@ class Particles(ParticleSystem):
             self.factory = None
         self.factoryType = type
         if (type == "PointParticleFactory"):
-            self.factory = PointParticleFactory.PointParticleFactory()
+            self.factory = PointParticleFactory()
         elif (type == "ZSpinParticleFactory"):
-            self.factory = ZSpinParticleFactory.ZSpinParticleFactory()
+            self.factory = ZSpinParticleFactory()
         elif (type == "OrientedParticleFactory"):
-            self.factory = OrientedParticleFactory.OrientedParticleFactory()
+            self.factory = OrientedParticleFactory()
         else:
             print("unknown factory type: %s" % type)
             return None
         self.factory.setLifespanBase(0.5)
-        ParticleSystem.ParticleSystem.setFactory(self, self.factory)
+        ParticleSystem.setFactory(self, self.factory)
 
     def setRenderer(self, type):
         """setRenderer(type)"""
@@ -106,12 +106,12 @@ class Particles(ParticleSystem):
             self.renderer = None
         self.rendererType = type
         if (type == "PointParticleRenderer"):
-            self.renderer = PointParticleRenderer.PointParticleRenderer()
+            self.renderer = PointParticleRenderer()
             self.renderer.setPointSize(1.0)
         elif (type == "LineParticleRenderer"):
-            self.renderer = LineParticleRenderer.LineParticleRenderer()
+            self.renderer = LineParticleRenderer()
         elif (type == "GeomParticleRenderer"):
-            self.renderer = GeomParticleRenderer.GeomParticleRenderer()
+            self.renderer = GeomParticleRenderer()
             npath = NodePath('default-geom')
             # This was moved here because we do not want to download
             # the direct tools with toontown.
@@ -119,11 +119,11 @@ class Particles(ParticleSystem):
             bbox = DirectSelection.DirectBoundingBox(npath)
             self.renderer.setGeomNode(bbox.lines.node())
         elif (type == "SparkleParticleRenderer"):
-            self.renderer = SparkleParticleRenderer.SparkleParticleRenderer()
+            self.renderer = SparkleParticleRenderer()
         elif (type == "SpriteParticleRenderer"):
-            self.renderer = SpriteParticleRenderer.SpriteParticleRenderer()
+            self.renderer = SpriteParticleRenderer()
             if (self.renderer.getSourceType() ==
-                SpriteParticleRenderer.SpriteParticleRenderer.STTexture):
+                SpriteParticleRenderer.getTexture()):
                 # Use current default texture
                 # See sourceTextureName SpriteParticleRenderer-extensions.py
                 self.renderer.setTextureFromFile()
@@ -134,7 +134,7 @@ class Particles(ParticleSystem):
         else:
             print("unknown renderer type: %s" % type)
             return None
-        ParticleSystem.ParticleSystem.setRenderer(self, self.renderer)
+        ParticleSystem.setRenderer(self, self.renderer)
 
     def setEmitter(self, type):
         """setEmitter(type)"""
@@ -144,28 +144,28 @@ class Particles(ParticleSystem):
             self.emitter = None
         self.emitterType = type
         if (type == "BoxEmitter"):
-            self.emitter = BoxEmitter.BoxEmitter()
+            self.emitter = BoxEmitter()
         elif (type == "DiscEmitter"):
-            self.emitter = DiscEmitter.DiscEmitter()
+            self.emitter = DiscEmitter()
         elif (type == "LineEmitter"):
-            self.emitter = LineEmitter.LineEmitter()
+            self.emitter = LineEmitter()
         elif (type == "PointEmitter"):
             self.emitter = PointEmitter.PointEmitter()
         elif (type == "RectangleEmitter"):
             self.emitter = RectangleEmitter.RectangleEmitter()
         elif (type == "RingEmitter"):
-            self.emitter = RingEmitter.RingEmitter()
+            self.emitter = RingEmitter()
         elif (type == "SphereSurfaceEmitter"):
-            self.emitter = SphereSurfaceEmitter.SphereSurfaceEmitter()
+            self.emitter = SphereSurfaceEmitter()
         elif (type == "SphereVolumeEmitter"):
-            self.emitter = SphereVolumeEmitter.SphereVolumeEmitter()
+            self.emitter = SphereVolumeEmitter()
             self.emitter.setRadius(1.0)
         elif (type == "TangentRingEmitter"):
-            self.emitter = TangentRingEmitter.TangentRingEmitter()
+            self.emitter = TangentRingEmitter()
         else:
             print("unknown emitter type: %s" % type)
             return None
-        ParticleSystem.ParticleSystem.setEmitter(self, self.emitter)
+        ParticleSystem.setEmitter(self, self.emitter)
 
     def addForce(self, force):
         """addForce(force)"""
@@ -269,16 +269,16 @@ class Particles(ParticleSystem):
         file.write(i2+'# Renderer parameters\n')
         alphaMode = self.renderer.getAlphaMode()
         aMode = "PRALPHANONE"
-        if (alphaMode == BaseParticleRenderer.BaseParticleRenderer.PRALPHANONE):
+        if (alphaMode == BaseParticleRenderer.PRALPHANONE):
             aMode = "PRALPHANONE"
         elif (alphaMode ==
-                BaseParticleRenderer.BaseParticleRenderer.PRALPHAOUT):
+                BaseParticleRenderer.PRALPHAOUT):
             aMode = "PRALPHAOUT"
         elif (alphaMode ==
-                BaseParticleRenderer.BaseParticleRenderer.PRALPHAIN):
+                BaseParticleRenderer.PRALPHAIN):
             aMode = "PRALPHAIN"
         elif (alphaMode ==
-                BaseParticleRenderer.BaseParticleRenderer.PRALPHAUSER):
+                BaseParticleRenderer.PRALPHAUSER):
             aMode = "PRALPHAUSER"
         file.write(i2+targ + '.renderer.setAlphaMode(BaseParticleRenderer.' + aMode + ')\n')
         file.write(i2+targ + '.renderer.setUserAlpha(%.2f)\n' % \
@@ -293,20 +293,20 @@ class Particles(ParticleSystem):
             file.write(i2+(targ + '.renderer.setEndColor(Vec4(%.2f, %.2f, %.2f, %.2f))\n' % (sColor[0], sColor[1], sColor[2], sColor[3])))
             blendType = self.renderer.getBlendType()
             bType = "PPONECOLOR"
-            if (blendType == PointParticleRenderer.PointParticleRenderer.PPONECOLOR):
+            if (blendType == PointParticleRenderer.PPONECOLOR):
                 bType = "PPONECOLOR"
-            elif (blendType == PointParticleRenderer.PointParticleRenderer.PPBLENDLIFE):
+            elif (blendType == PointParticleRenderer.PPBLENDLIFE):
                 bType = "PPBLENDLIFE"
-            elif (blendType == PointParticleRenderer.PointParticleRenderer.PPBLENDVEL):
+            elif (blendType == PointParticleRenderer.PPBLENDVEL):
                 bType = "PPBLENDVEL"
             file.write(i2+targ + '.renderer.setBlendType(PointParticleRenderer.' + bType + ')\n')
             blendMethod = self.renderer.getBlendMethod()
             bMethod = "PPNOBLEND"
-            if (blendMethod == BaseParticleRenderer.BaseParticleRenderer.PPNOBLEND):
+            if (blendMethod == BaseParticleRenderer.PPNOBLEND):
                 bMethod = "PPNOBLEND"
-            elif (blendMethod == BaseParticleRenderer.BaseParticleRenderer.PPBLENDLINEAR):
+            elif (blendMethod == BaseParticleRenderer.PPBLENDLINEAR):
                 bMethod = "PPBLENDLINEAR"
-            elif (blendMethod == BaseParticleRenderer.BaseParticleRenderer.PPBLENDCUBIC):
+            elif (blendMethod == BaseParticleRenderer.PPBLENDCUBIC):
                 bMethod = "PPBLENDCUBIC"
             file.write(i2+targ + '.renderer.setBlendMethod(BaseParticleRenderer.' + bMethod + ')\n')
         elif (self.rendererType == "LineParticleRenderer"):
@@ -329,13 +329,13 @@ class Particles(ParticleSystem):
             file.write(i2+targ + '.renderer.setDeathRadius(%.4f)\n' % self.renderer.getDeathRadius())
             lifeScale = self.renderer.getLifeScale()
             lScale = "SPNOSCALE"
-            if (lifeScale == SparkleParticleRenderer.SparkleParticleRenderer.SPSCALE):
+            if (lifeScale == SparkleParticleRenderer.SPSCALE):
                 lScale = "SPSCALE"
             file.write(i2+targ + '.renderer.setLifeScale(SparkleParticleRenderer.' + lScale + ')\n')
         elif (self.rendererType == "SpriteParticleRenderer"):
             file.write(i2+'# Sprite parameters\n')
             if (self.renderer.getSourceType() ==
-                SpriteParticleRenderer.SpriteParticleRenderer.STTexture):
+                SpriteParticleRenderer.getTexture()):
                 tex = self.renderer.getTexture()
                 file.write(i2+targ + '.renderer.setTexture(loader.loadTexture(\'' + tex.getFilename().getFullpath() + '\'))\n')
             else:
@@ -354,11 +354,11 @@ class Particles(ParticleSystem):
             file.write(i2+targ + '.renderer.setNonanimatedTheta(%.4f)\n' % self.renderer.getNonanimatedTheta())
             blendMethod = self.renderer.getAlphaBlendMethod()
             bMethod = "PPNOBLEND"
-            if (blendMethod == BaseParticleRenderer.BaseParticleRenderer.PPNOBLEND):
+            if (blendMethod == BaseParticleRenderer.PPNOBLEND):
                 bMethod = "PPNOBLEND"
-            elif (blendMethod == BaseParticleRenderer.BaseParticleRenderer.PPBLENDLINEAR):
+            elif (blendMethod == BaseParticleRenderer.PPBLENDLINEAR):
                 bMethod = "PPBLENDLINEAR"
-            elif (blendMethod == BaseParticleRenderer.BaseParticleRenderer.PPBLENDCUBIC):
+            elif (blendMethod == BaseParticleRenderer.PPBLENDCUBIC):
                 bMethod = "PPBLENDCUBIC"
             file.write(i2+targ + '.renderer.setAlphaBlendMethod(BaseParticleRenderer.' + bMethod + ')\n')
             file.write(i2+targ + '.renderer.setAlphaDisable(%d)\n' % self.renderer.getAlphaDisable())
@@ -366,11 +366,11 @@ class Particles(ParticleSystem):
         file.write(i2+'# Emitter parameters\n')
         emissionType = self.emitter.getEmissionType()
         eType = "ETEXPLICIT"
-        if (emissionType == BaseParticleEmitter.BaseParticleEmitter.ETEXPLICIT):
+        if (emissionType == BaseParticleEmitter.ETEXPLICIT):
             eType = "ETEXPLICIT"
-        elif (emissionType == BaseParticleEmitter.BaseParticleEmitter.ETRADIATE):
+        elif (emissionType == BaseParticleEmitter.ETRADIATE):
             eType = "ETRADIATE"
-        elif (emissionType == BaseParticleEmitter.BaseParticleEmitter.ETCUSTOM):
+        elif (emissionType == BaseParticleEmitter.ETCUSTOM):
             eType = "ETCUSTOM"
         file.write(i2+targ + '.emitter.setEmissionType(BaseParticleEmitter.' + eType + ')\n')
         file.write(i2+targ + '.emitter.setAmplitude(%.4f)\n' % self.emitter.getAmplitude())
