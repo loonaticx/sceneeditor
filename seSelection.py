@@ -17,11 +17,15 @@ from direct.directtools.DirectUtil import *
 from seGeometry import *
 from direct.showbase.DirectObject import *
 from quad import *
+from direct.directnotify import DirectNotifyGlobal
+
 COA_ORIGIN = 0
 COA_CENTER = 1
 
 # MRM: To do: handle broken node paths in selected and deselected dicts
 class DirectNodePath(NodePath):
+    notify = DirectNotifyGlobal.directNotify.newCategory("seSelection")
+
     # A node path augmented with info, bounding box, and utility methods
     def __init__(self, nodePath):
         # Initialize the superclass
@@ -58,6 +62,10 @@ class DirectNodePath(NodePath):
         return self.bbox.getMax()
 
 class SelectedNodePaths(DirectObject):
+    notify = DirectNotifyGlobal.directNotify.newCategory("seSelection::SelectedNodePath")
+    notify.setDebug(True)
+    # todo: make a new settings module and import stuff from there
+    
     def __init__(self):
         self.reset()
 
@@ -81,6 +89,10 @@ class SelectedNodePaths(DirectObject):
         id = nodePath.get_key()
         # First see if its already in the selected dictionary
         dnp = self.getSelectedDict(id)
+        self.notify.debug("%s %s" % (id, dnp))
+        # BUG: selectedDict / getSelectedAsList will always be empty
+        self.notify.debug(self.getSelectedAsList())
+
         # If so, we're done
         if not dnp:
             # See if it is in the deselected dictionary

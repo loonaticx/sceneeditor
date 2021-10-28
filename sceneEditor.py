@@ -9,7 +9,7 @@ ShowBase()
 
 from direct.showbase.TkGlobal import spawnTkLoop
 
-
+from direct.directnotify import DirectNotifyGlobal
 from direct.directtools.DirectGlobals import *
 from direct.tkwidgets.AppShell import*
 
@@ -56,6 +56,7 @@ AllScene = dataHolder()
 #
 
 class myLevelEditor(AppShell):
+    notify = DirectNotifyGlobal.directNotify.newCategory("SceneEditor")
     ## overridden the basic app info ##
     appname = 'Scene Editor - New Scene'
     appversion      = '1.0'
