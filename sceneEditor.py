@@ -12,7 +12,7 @@ from direct.showbase.TkGlobal import spawnTkLoop
 from direct.directnotify import DirectNotifyGlobal
 from direct.directtools.DirectGlobals import *
 from direct.tkwidgets.AppShell import*
-
+import SceneGlobals as sg
 from SideWindow import*
 from duplicateWindow import*
 from lightingPanel import *
@@ -57,6 +57,13 @@ AllScene = dataHolder()
 
 class myLevelEditor(AppShell):
     notify = DirectNotifyGlobal.directNotify.newCategory("SceneEditor")
+
+    # why does this break tk gui?
+    if os.path.isfile(sg.configFile):
+        loadPrcFile(sg.configFile)
+    else:
+        notify.error("Config file not found @ %s" % sg.configFile)
+
     ## overridden the basic app info ##
     appname = 'Scene Editor - New Scene'
     appversion      = '1.0'
@@ -219,6 +226,11 @@ class myLevelEditor(AppShell):
             ['f11',self.loadFromBam],
             ['f12',self.saveAsBam],
             ]
+        if base.config.GetBool('want-oobe', False):
+            base.oobe()
+        # with oobe mode we can possibly bind it where
+        # instead of key controls controlling camera,
+        # control the selected nodepath
 
 
         #################################
