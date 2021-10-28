@@ -1712,7 +1712,9 @@ class myLevelEditor(AppShell):
             t.nodePath = nodePath
             t.doneColor = doneColor
             # This really does all the work
-            t.uponDeath = self.flashDone
+            t.uponDeath = self.flashDone(t)
+            # todo: this doesnt change the color but honestly who cares
+            # lets just remove it
 
     def flashDummy(self, state):
         # Real work is done in upon death function

@@ -94,12 +94,12 @@ class SelectedNodePaths(DirectObject):
         self.notify.debug(self.getSelectedAsList())
 
         # If so, we're done
-        if not dnp:
+        if dnp is None:
             # See if it is in the deselected dictionary
             dnp = self.getDeselectedDict(id)
             if dnp:
                 # Remove it from the deselected dictionary
-                del(self.deselectedDict[id])
+                self.deselectedDict.pop(id)
                 # Show its bounding box
                 dnp.highlight()
             else:
@@ -108,6 +108,7 @@ class SelectedNodePaths(DirectObject):
                 # Show its bounding box
                 dnp.highlight()
             # Add it to the selected dictionary
+            # selectedDict gets a value here here, then it goes away?
             self.selectedDict[dnp.get_key()] = dnp
         # And update last
         __builtins__["last"] = self.last = dnp
@@ -119,7 +120,9 @@ class SelectedNodePaths(DirectObject):
         id = nodePath.get_key()
         # See if it is in the selected dictionary
         dnp = self.getSelectedDict(id)
-        if dnp:
+        self.notify.debug("DESELECT %s %s" % (id, dnp))
+
+        if dnp is not None:
             # It was selected:
             # Hide its bounding box
             dnp.dehighlight()
@@ -295,6 +298,7 @@ class DirectBoundingBox:
         # Create a line segments object for the bbox
         lines = LineNodePath(hidden)
         lines.node().setName('bboxLines')
+        # bbox does not cause perma-color to happen
         lines.setColor( VBase4( 1., 0., 0., 1. ) )
         lines.setThickness( 0.5 )
 
