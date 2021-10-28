@@ -502,7 +502,7 @@ class BlendAnimPanel(AppShell):
         # setRatio(self, ratio)
         # callback function
         # This one will be called each time when user drag the blend ratio
-        # slider on the panel. This will set the blening ratio to both animation.
+        # slider on the panel. This will set the blending ratio to both animation.
         # (Which is "setControlEffect")
         #################################################################
         self.blendRatio = float(ratio)
@@ -518,7 +518,7 @@ class BlendAnimPanel(AppShell):
         # setBlendAnim(self, name)
         # This function will be called each time when user try to select
         # a existing blending animation from the comboBox on the panel
-        # This function will re-set every varaibles on the panel to what
+        # This function will re-set every variables on the panel to what
         # it should be. For example, when user choose blending anim "R,"
         # which was blended by anim "a" and "b" with ratio "c,"
         # then this function will set Animation A to "a" and animation B
@@ -541,7 +541,7 @@ class BlendAnimPanel(AppShell):
         # setBlendAnimList(self, dict, select=False)
         # This function will be called when we need to reset the dropdown list
         # of "Blend Anim."
-        # About "selec" option, this now is mainly used when we remove
+        # About "select" option, this now is mainly used when we remove
         # a blended animation from the actor. When it has been specified to True,
         # the function will not only reset the list, but will also automatically
         # select one from the top of list, if it is not empty.
@@ -569,7 +569,7 @@ class BlendAnimPanel(AppShell):
         #################################################################
         # saveButtonPushed(self)
         # This function will be called when user clicked on the "Save" button
-        # This functiont will collect all data on the panel and send them with
+        # This function will collect all data on the panel and send them with
         # a message to sceneEditor to save the current blending animation
         # into the dataHolder.
         #################################################################
@@ -600,7 +600,7 @@ class BlendAnimPanel(AppShell):
     def removeButtonPushed(self):
         #################################################################
         # removeButtonPushed(self)
-        # remove the current seleted blended animation from the actor.
+        # remove the current selected blended animation from the actor.
         # This will send out a message to sceneEditor to delete the data inside
         # the dataHolder and then reset the list of here.
         #################################################################

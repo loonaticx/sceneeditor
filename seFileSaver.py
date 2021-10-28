@@ -12,7 +12,7 @@ from panda3d.core import LightAttrib
 from panda3d.core import CollisionHandlerEvent
 from panda3d.core import CollisionTraverser
 from panda3d.core import PointLight
-(ok honestly panda3d.core * can be done at this poitn)
+(ok honestly panda3d.core * can be done at this point)
 
 """
 

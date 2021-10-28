@@ -4,7 +4,7 @@
 # Altered by Yi-Hong Lin, yihhongl@andrew.cmu.edu, 2004
 #
 # We took out a lot of stuff we don't need in the sceneeditor.
-# This is also the main reason we didn't just inherite the original directSession.
+# This is also the main reason we didn't just inherit the original directSession.
 # Also, the way of selecting, renaming and some hot-key controls are changed.
 #
 #################################################################

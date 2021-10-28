@@ -48,7 +48,7 @@ import math
 #################################################################
 # All scene and windows object will be stored in here.
 # So, any event which will or need to change contents
-# should be wirtten in here or imported into here!
+# should be written in here or imported into here!
 #################################################################
 from dataHolder import*  ## Use this thing to Save/load data.
 AllScene = dataHolder()
@@ -1040,7 +1040,7 @@ class myLevelEditor(AppShell):
         pass
 
 
-    ## Take care those things under Edit nemu
+    ## Take care those things under Edit menu
     def unDo(self):
         pass
 
